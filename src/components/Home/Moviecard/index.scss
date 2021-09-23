@@ -1,21 +1,25 @@
 .cardContainer{
 
     width: 40%;
+    height: 22rem;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-content: space-between;
     border: 1px solid rgba(128, 128, 128, 0.521);
     border-radius: 15px;
+    cursor: pointer;
 }
 
 .upperPart{
 
     display: flex;
-    height: 15em;
     flex-direction: column;
     justify-content: space-between;
-    background-color: green;
+    background-position: center;
+    padding-top: 0.5em;
+    height: 86%;
     border-radius: 15px 15px 0px 0px;
+    background-size: cover;
 }
 
 .upperPart__top{
@@ -23,22 +27,15 @@
     display: flex;
     width: 90%;
     align-self: center;
-    margin-top: 0.5em;
-    padding: 0em 1em 0em 1em;
     justify-content: space-between;
+    align-items: center;
 }
-.upperPart__top__filter{
 
-    position: absolute;
-}
-.upperPart__top__img{
-    position: absolute;
-}
 
 .upperPart__top__ageRate{
 
     background-color: #07023178;
-    padding: 0.4em 0.2em 0.4em 0.2em;
+    padding: 0.4em 0.3em 0.4em 0.3em;
     border: 0.5px solid grey;
     border-radius: 5px;
     color: white;
@@ -46,9 +43,16 @@
     font-weight: 600;
 }
 
+.upperPart__top__fav:hover{
+
+    color:red;
+}
+
 .upperPart__bottom{
 
     padding-left: 0.3em;
+    background: linear-gradient(
+    0deg, #01011d 76%, rgba(45, 238, 253, 0) 100%);
 }
 
 .upperPart__bottom__genre{
@@ -60,7 +64,14 @@
 .upperPart__bottom__flex{
 
     display: flex;
+    align-items: center;
     gap: 0.3em;
+    color: white;
+}
+
+.upperPart__bottom__flex__reviews{
+
+    font-size: 0.7em;
 }
 
 
@@ -69,8 +80,9 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    grid-gap: 0.1em;
     gap: 0.1em;
-    padding: 1.5em 0em 0.5em 0.5em;
+    padding: 0.7em 0em 0.5em 0.3em;
     color: white;
 }
 

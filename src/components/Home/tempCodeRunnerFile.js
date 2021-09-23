@@ -1,0 +1,1 @@
+Object.values(this.context)
