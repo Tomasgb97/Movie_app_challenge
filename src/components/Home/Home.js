@@ -39,7 +39,7 @@ export default class Home extends Component {
                     <Searchbar></Searchbar>
 
                     <div className="container__list">
-                        {!this.state.datos ? <h2 color="white">Loading</h2> : Object.values(this.context).map(({adult, genre_ids, vote_count, title, release_date, vote_average, id, poster_path}) => <Moviecard key={id} stars={vote_average} title={title} reviews={vote_count} adult={adult} release={release_date} genres={genre_ids} img={poster_path} />)}
+                        {!this.state.datos ? <h2 color="white">Loading</h2> : Object.values(this.context).map(({adult, genre_ids, vote_count, title, release_date, vote_average, id, poster_path}) => <Moviecard key={id} id={id} stars={vote_average} title={title} reviews={vote_count} adult={adult} release={release_date} genres={genre_ids} img={poster_path} />)}
                     </div>
 
                 </div>

@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import { BsHeart } from 'react-icons/bs'
 import Stars from '../../Stars';
+import { Link } from 'react-router-dom';
 
 
 export default class Moviecard extends Component {
@@ -40,32 +41,35 @@ getGenre()}
         
     render() {
         
-       
+       const {img, adult,genres, reviews, stars, id, title, release } = this.props
 
 
         return (
-            <div className="cardContainer">
-                <div className="upperPart" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${this.props.img})`}}>
-                    <div className="upperPart__top">
-                        <div className="upperPart__top__ageRate">{this.props.adult === true ? "18" : "8"}+</div>
-                        <BsHeart className="upperPart__top__fav"></BsHeart>
-                    </div>
-                    <div className="upperPart__bottom">
-                        <span className="upperPart__bottom__genre">{this.state.genres}</span>
-                        <div className="upperPart__bottom__flex">
-                            <Stars stars={this.props.stars}></Stars>
-                            <span className="upperPart__bottom__flex__reviews">{this.props.reviews} Reviews</span>
+                <div className="cardContainer">
+                    
+                    <div className="upperPart" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${img})`}}>
+                        <div className="upperPart__top">
+                            <div className="upperPart__top__ageRate">{adult === true ? "18" : "8"}+</div>
+                            <BsHeart className="upperPart__top__fav"></BsHeart>
+                        </div>
+                        <div className="upperPart__bottom">
+                            <span className="upperPart__bottom__genre">{this.state.genres}</span>
+                            <div className="upperPart__bottom__flex">
+                                <Stars stars={stars}></Stars>
+                                <span className="upperPart__bottom__flex__reviews">{reviews} Reviews</span>
+                            </div>
+
                         </div>
 
                     </div>
+                    <Link to={`/movies/${id}`} className="lowerPart">
+                        <h4 className="lowerPart__title">{title}</h4>
+                        <p className="lowerPart__duration">{release}</p>
 
+                    </Link>
+                    
                 </div>
-                <div className="lowerPart">
-                    <h4 className="lowerPart__title">{this.props.title}</h4>
-                    <p className="lowerPart__duration">{this.props.release}</p>
 
-                </div>
-            </div>
         )
     }
 }

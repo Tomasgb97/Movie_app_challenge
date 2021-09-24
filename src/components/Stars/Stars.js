@@ -16,13 +16,15 @@ export default class Stars extends Component {
         let starsArray= [];
         let starsAmount = parseInt(Math.floor((this.props.stars/2)));
 
-        for(let i = 0; i != 5; i++){
+        for(let i = 0; i !== 5; i++){
             if(starsAmount > i){
-                starsArray.push(<BsStarFill key={i}/>)
-            }else{starsArray.push(<BsStar key={i}/>)}
+                starsArray.push(<BsStarFill className="star--filled" key={i}/>)
+            }else{starsArray.push(<BsStar className="star--unfilled" key={i}/>)}
         }
         this.setState(starsArray);
     }
+
+
 
 
     render() {
