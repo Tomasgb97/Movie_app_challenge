@@ -1,1 +1,2 @@
-Object.values(this.context)
+import './index.scss'
+export {default} from './Home'

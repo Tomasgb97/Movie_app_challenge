@@ -10,6 +10,11 @@
     cursor: pointer;
 }
 
+.cardContainer:hover{
+
+    box-shadow: black;
+}
+
 .upperPart{
 
     display: flex;
@@ -57,8 +62,13 @@
 
 .upperPart__bottom__genre{
 
-    color:rgb(255, 0, 64);
+    color: #ff0040;
     font-size: 0.8em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 87%;
+    display: block;
+    overflow: hidden;
 }
 
 .upperPart__bottom__flex{
@@ -89,7 +99,12 @@
 .lowerPart__title{
 
     margin: 0em;
-    color: rgb(216, 216, 216);
+    color: #d8d8d8;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 87%;
+    display: block;
+    overflow: hidden;
 }
 .lowerPart__duration{
 
