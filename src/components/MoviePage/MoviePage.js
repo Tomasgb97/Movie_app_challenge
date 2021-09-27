@@ -18,9 +18,8 @@ export default class MoviePage extends Component {
         this.state = {
             adult: "",
             cast: [""],
-            vote_count: "",
-            genre_ids: [""]};
- 
+            vote_count: "nada",
+            genre_ids: ["nada"]};
     }
 
 
@@ -28,7 +27,8 @@ export default class MoviePage extends Component {
     
     let  idNumber = parseInt(this.props.match.params.id);                                   //gets id of the movie and formats it;
     let thisMovie = Object.values(this.context).find(movie => movie.id === idNumber)        //finds the movie on the context using the id as query parameter
-    this.setState( thisMovie );
+    this.setState(thisMovie);
+
 
     const getGenre = async() => {                                                           //fetches for all generes ids on the api and filters them to find the ones that match with this movie genres ids.
         fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`, {
@@ -52,6 +52,7 @@ export default class MoviePage extends Component {
 
     getGenre();
 
+
     const getCast = async() => {        //gets the cast for this movie throught the api and sets the state to the first 10 cast members;
     
         await fetch(`https://api.themoviedb.org/3/movie/${idNumber}/credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US)`)
@@ -60,10 +61,10 @@ export default class MoviePage extends Component {
         }
 
         getCast();
+
     
     }
 
-    
 
     render() {
         return (
@@ -104,7 +105,7 @@ export default class MoviePage extends Component {
                         <p>see all</p>
                     </div>
                     <div  className='castcontainer__cards'>
-                    {this.state.cast.map(castmember => <CastComponent key={castmember.id} actorname={castmember.name} img={`https://image.tmdb.org/t/p/w500/${castmember.profile_path}`}></CastComponent>)}
+                    {this.state.cast.map(castmember => <CastComponent key={castmember.id} id={castmember.id} actorname={castmember.name} img={`https://image.tmdb.org/t/p/w500/${castmember.profile_path}`}></CastComponent>)}
                     </div>
                     
                     

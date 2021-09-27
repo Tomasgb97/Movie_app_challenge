@@ -1,5 +1,6 @@
 import Home from './components/Home'
 import MoviePage from './components/MoviePage'
+import Actor from './components/Actor'
 import React, { Component} from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import MyContext from './components/Mycontext'
@@ -47,6 +48,7 @@ export default class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path="/movies/:id" component={MoviePage}  />
+          <Route exact path="/actors/:id" component={Actor}  />
         </Switch>
         </MyContext.Provider>
       </Router>

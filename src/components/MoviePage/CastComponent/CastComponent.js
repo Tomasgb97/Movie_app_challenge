@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 export class CastComponent extends Component {
     render() {
 
-        const {img, actorname} = this.props;
+        const {img, actorname, id} = this.props;
         return (
-            <div className='actorCard'>
+            <Link to={`/actors/${id}`} className='actorCard'>
                 <img className='actorCard__img' alt={actorname} src={img}></img>
                 <h4 className='actorCard__name'>{actorname}</h4>
                 
-            </div>
+            </Link>
         )
     }
 }

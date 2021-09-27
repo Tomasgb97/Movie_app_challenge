@@ -74,6 +74,9 @@
     padding-left: 0.3em;
     background: linear-gradient(
     0deg, #01011d 76%, rgba(45, 238, 253, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
 }
 
 .upperPart__bottom__genre{
