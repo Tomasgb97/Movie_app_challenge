@@ -13,7 +13,7 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
     
-    this.state = "";
+    this.state = {datos: []};
       
 
   }
@@ -21,11 +21,13 @@ export default class Home extends Component {
 
   componentDidMount(){
 
-   const set = async() => await this.setState({ datos: Object.values(this.context)})
+   const set = async() => await this.setState({ datos: Object.values(this.context)})  //sets the "data" state to the context, transformed from object to arrray [this is not working as expected].
     set();
-    
+ 
 
   }
+
+
 
 
  

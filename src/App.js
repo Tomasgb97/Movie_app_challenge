@@ -13,25 +13,14 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     
-      
-    this.state = (fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {
-      "method": "GET",
-      "mode": "cors"
-      })
-        .then(
-           response => response.json())
-        .then(
-           r => r.results)
-        .catch(err => {
-        console.error(err);
-        }))
+   this.state = {};
 
   }
 
   componentDidMount(){
     
 
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {
+    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {    //gets the most popular movies from api and sets them into the state
       "method": "GET",
       "mode": "cors"
       })

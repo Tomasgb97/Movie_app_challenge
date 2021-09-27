@@ -16,7 +16,7 @@ export default class Moviecard extends Component {
     componentDidMount(){
 
 
-        const getGenre = async() => {fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`, {
+        const getGenre = async() => {fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`, {  //gets all genres from api
         "method": "GET",
         "mode": "cors"
         })
@@ -24,10 +24,10 @@ export default class Moviecard extends Component {
              response => response.json())
           .then(
              response => {
-                const arrayFromResponse = Object.values(response)
-                const arrayWithGenres = arrayFromResponse[0]
-                const filteredArray = arrayWithGenres.filter(genre => this.props.genres.includes(genre.id))
-                const genresNamesArray = filteredArray.map(genre => genre.name)
+                const arrayFromResponse = Object.values(response)  //sets genres to array
+                const arrayWithGenres = arrayFromResponse[0]       //access to genres id arrray
+                const filteredArray = arrayWithGenres.filter(genre => this.props.genres.includes(genre.id))  //filter for ids matches between api genres ids and this movie ids
+                const genresNamesArray = filteredArray.map(genre => genre.name)  //gets the name of the matchig ids
                 this.setState({ genres: genresNamesArray.join(", ")})
                 })
           .catch(err => {
@@ -41,7 +41,7 @@ getGenre()}
         
     render() {
         
-       const {img, adult,genres, reviews, stars, id, title, release } = this.props
+       const {img, adult, reviews, stars, id, title, release } = this.props   //destructured props
 
 
         return (

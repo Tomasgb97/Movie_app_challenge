@@ -1,0 +1,21 @@
+.actorCard{
+
+    height: 100%;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 0.3em 0px 0.3em
+}
+
+.actorCard__img{
+
+    width: 7rem;
+    height: 10rem;
+    border-radius: 0.3em;
+}
+
+.actorCard__name{
+
+    color: white;
+}
