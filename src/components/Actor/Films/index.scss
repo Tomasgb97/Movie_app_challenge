@@ -1,0 +1,18 @@
+.filmcard{
+
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.filmcard__img{
+
+    width: 8rem;
+    height: 10rem;
+    border-radius: 0.4em;
+}
+
+.filmcard__name{
+
+    color: white;
+}

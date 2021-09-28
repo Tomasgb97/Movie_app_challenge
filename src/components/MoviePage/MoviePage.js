@@ -1,4 +1,4 @@
-import React, { Component, Suspense } from 'react'
+import React, { Component} from 'react'
 import { Link } from 'react-router-dom';
 import MyContext from '../Mycontext'
 import {AiFillPlayCircle} from 'react-icons/ai'
