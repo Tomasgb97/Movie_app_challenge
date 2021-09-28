@@ -10,7 +10,16 @@ export default class Moviecard extends Component {
         super(props);
 
         this.state = {};
+
+        this.addDefaultSrc = this.addDefaultSrc.bind(this);
     }
+
+
+
+    addDefaultSrc(ev){
+        ev.target.src = '../noimage.png'
+      }
+
 
 
     componentDidMount(){
@@ -47,7 +56,7 @@ getGenre()}
         return (
                 <div className="cardContainer">
                     
-                    <div className="upperPart" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${img})`}}>
+                    <div className="upperPart" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${img}), url(../noimage.png)`}}>
                         <div className="upperPart__top">
                             <div className="upperPart__top__ageRate">{adult === true ? "18" : "8"}+</div>
                             <BsHeart className="upperPart__top__fav"></BsHeart>

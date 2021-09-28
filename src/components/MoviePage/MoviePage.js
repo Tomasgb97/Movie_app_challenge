@@ -26,7 +26,7 @@ export default class MoviePage extends Component {
     componentDidMount(){
     
     let  idNumber = parseInt(this.props.match.params.id);                                   //gets id of the movie and formats it;
-    let thisMovie = Object.values(this.context).find(movie => movie.id === idNumber)        //finds the movie on the context using the id as query parameter
+    let thisMovie = Object.values(this.context.fetched).find(movie => movie.id === idNumber)        //finds the movie on the context using the id as query parameter
     this.setState(thisMovie);
 
 

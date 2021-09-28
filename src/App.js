@@ -14,7 +14,47 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     
-   this.state = {};
+   this.state = {}
+
+   this.fetchquery = this.fetchquery.bind(this);
+
+
+  }
+
+  fetchquery(query){
+
+    this.setState(this.props,()=>{
+
+      if(query !== ""){
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&query=${query}&page=1&include_adult=false`, {    //gets the most popular movies from api and sets them into the state
+        "method": "GET",
+        "mode": "cors"
+        })
+          .then(
+             response => response.json())
+          .then(
+             r => this.setState(r.results))
+          .catch(err => {
+          console.error(err);
+  
+          })}else{
+  
+          fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {    //gets the most popular movies from api and sets them into the state
+          "method": "GET",
+          "mode": "cors"
+          })
+            .then(
+              response => response.json())
+            .then(
+              r => this.setState(r.results))
+            .catch(err => {
+            console.error(err);
+            })
+  
+            }
+    } )
+
+    
 
   }
 
@@ -44,7 +84,7 @@ export default class App extends Component {
 
     return (
       <Router>
-        <MyContext.Provider value={this.state}>
+        <MyContext.Provider value={{fetched: this.state, updatefetchstate: this.fetchquery}}>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path="/movies/:id" component={MoviePage}  />

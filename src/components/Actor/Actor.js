@@ -72,7 +72,7 @@ export class Actor extends Component {
                     <div className="biocontainer">
                         <h3>Biography</h3>
 
-                        <p>{this.state.bio.biography === "" ? "No biograpfuy for this actor. Feel free to add teh required info at www.example-web.com" : this.state.bio.biography}</p>
+                        <p>{this.state.bio.biography === "" ? "There is no biography for this actor. Feel free to add the required info at www.example-web.com" : this.state.bio.biography}</p>
                     </div>
                         
 
