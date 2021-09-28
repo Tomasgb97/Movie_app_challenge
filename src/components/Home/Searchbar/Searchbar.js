@@ -16,16 +16,24 @@ export default class Searchbar extends Component {
         this.updatefetch = this.updatefetch.bind(this);
     }
 
-    handlequerychange(e){
+
+
+    handlequerychange(e){                                                          //sets state to searchbar input value
 
         this.setState({value: e.target.value})
     }
+
+
     
-    updatefetch(query){
+    updatefetch(query){                                                         //passes the query parameter to app "App" component in order to modify the context and fetch the queried movies.
 
         this.context.updatefetchstate(query.value);
         
     }
+
+
+
+
     render() {
 
         return (

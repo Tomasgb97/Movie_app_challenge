@@ -16,3 +16,13 @@
 
     color: white;
 }
+
+
+@media (max-width: 480px){
+
+    .filmcard__img{
+
+        width: 6rem;
+        height: 8rem;
+    }
+}

@@ -8,7 +8,7 @@ export class CastComponent extends Component {
         this.addDefaultSrc = this.addDefaultSrc.bind(this);
     }
 
-    addDefaultSrc(ev){
+    addDefaultSrc(ev){                                           //sets a default image in case the src link provided by the api dosen't return any.
         ev.target.src = '../noimage.png'
       }
 

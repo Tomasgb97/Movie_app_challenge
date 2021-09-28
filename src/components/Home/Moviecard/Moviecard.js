@@ -11,14 +11,7 @@ export default class Moviecard extends Component {
 
         this.state = {};
 
-        this.addDefaultSrc = this.addDefaultSrc.bind(this);
     }
-
-
-
-    addDefaultSrc(ev){
-        ev.target.src = '../noimage.png'
-      }
 
 
 

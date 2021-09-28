@@ -139,3 +139,29 @@
     font-weight: 600;
     color: grey;
 }
+
+@media (max-width: 480px){
+
+    .cardContainer{
+
+        height: 15rem;
+        width: 45%;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1920px){
+
+    .cardContainer{
+
+        width: 20%;
+    }
+}
+
+@media (min-width: 1920px){
+
+    .cardContainer{
+
+        height: 33rem;
+    }
+}

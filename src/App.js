@@ -21,12 +21,12 @@ export default class App extends Component {
 
   }
 
-  fetchquery(query){
+  fetchquery(query){          //checks for the query param and searches it, unless it's "". in that case the api returns 20 most popular movies.
 
-    this.setState(this.props,()=>{
+    this.setState(this.props,()=>{                                                 
 
       if(query !== ""){
-        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&query=${query}&page=1&include_adult=false`, {    //gets the most popular movies from api and sets them into the state
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&query=${query}&page=1&include_adult=false`, {    
         "method": "GET",
         "mode": "cors"
         })
@@ -37,9 +37,9 @@ export default class App extends Component {
           .catch(err => {
           console.error(err);
   
-          })}else{
+          })}else{                                                               
   
-          fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {    //gets the most popular movies from api and sets them into the state
+          fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {    
           "method": "GET",
           "mode": "cors"
           })
@@ -57,6 +57,10 @@ export default class App extends Component {
     
 
   }
+
+
+
+
 
   componentDidMount(){
     

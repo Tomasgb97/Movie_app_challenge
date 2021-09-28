@@ -4,18 +4,23 @@ import { Link } from 'react-router-dom'
 import Films from './Films'
 
 export class Actor extends Component {
+
+
     constructor(props){
         super(props)
         this.state={bio: {}, movies: []}
     }
 
-    componentDidMount(){
 
-        console.log(dateFormat("1963-12-18", "longDate"));
 
-        let  idNumber = parseInt(this.props.match.params.id)
 
-        const getActorBio = async() => {                                                          
+
+
+componentDidMount(){
+
+        let  idNumber = parseInt(this.props.match.params.id)                                                             //gets the actor id number from the url parameters
+
+        const getActorBio = async() => {                                                                                // gets the actor bio throught its Id and sets it as a state
             fetch(`https://api.themoviedb.org/3/person/${idNumber}?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`, {
             "method": "GET",
             "mode": "cors"
@@ -24,9 +29,15 @@ export class Actor extends Component {
                  response => response.json())
             .then(r => this.setState({bio: r}, () => console.log(this.state.bio)))}
 
-        getActorBio();
 
-        const getActorMovies = async() => {                                                          
+
+    getActorBio();
+
+
+
+
+
+        const getActorMovies = async() => {                                                                           //gets the movies where the actor worked on the cast
             fetch(`https://api.themoviedb.org/3/person/${idNumber}/movie_credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`, {
             "method": "GET",
             "mode": "cors"
@@ -34,9 +45,18 @@ export class Actor extends Component {
             .then(
                  response => response.json())
             .then(r => this.setState({movies: r.cast}))}
-        
-            getActorMovies()
-    }
+
+
+   
+    getActorMovies();
+
+
+
+}
+
+
+
+
     render() {
 
         return (

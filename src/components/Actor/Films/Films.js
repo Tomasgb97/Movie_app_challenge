@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
 export class Films extends Component {
+
+
     constructor(props){
         super(props)
         this.state={};
@@ -8,16 +10,20 @@ export class Films extends Component {
         this.addDefaultSrc = this.addDefaultSrc.bind(this);
         
     }
-    addDefaultSrc(ev){
+
+
+
+    addDefaultSrc(ev){                                      //sets a default image in case the api dosen't return any
         ev.target.src = '../noimage.png'
       }
     
 
-    render() {
 
-       
+
+
+    render() {
         
-        const{filmname, img} = this.props;
+        const{filmname, img} = this.props;                         //destructure props
 
         return (
             <div className="filmcard">
