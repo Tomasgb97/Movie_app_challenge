@@ -69,9 +69,9 @@ componentDidMount(){
                 </div>
                 <div className="maincontainer">
 
-                    <h1>{this.state.bio.name}</h1>
+                    <h1 data-aos="fade-left" data-aos-duration="500" data-aos-delay="100">{this.state.bio.name}</h1>
                     <div className="maincontainer__profile">
-                    <img className="maincontainer__profile__pic" alt={`${this.state.bio.name} poster`} src={`https://image.tmdb.org/t/p/w500/${this.state.bio.profile_path}`}></img>
+                    <img data-aos="fade-right" data-aos-duration="500" data-aos-delay="100" className="maincontainer__profile__pic" alt={`${this.state.bio.name} poster`} src={`https://image.tmdb.org/t/p/w500/${this.state.bio.profile_path}`}></img>
                         <div className="maincontainer__profile__flex">
                             <p className="maincontainer__profile__flex__birth">{dateFormat(this.state.bio.birthday, "longDate")}</p>
                             <p className="maincontainer__profile__flex__place">{this.state.bio.place_of_birth}</p>
@@ -92,7 +92,7 @@ componentDidMount(){
                     <div className="biocontainer">
                         <h3>Biography</h3>
 
-                        <p>{this.state.bio.biography === "" ? "There is no biography for this actor. Feel free to add the required info at www.example-web.com" : this.state.bio.biography}</p>
+                        <p data-aos="fade-up" data-aos-duration="200">{this.state.bio.biography === "" ? "There is no biography for this actor. Feel free to add the required info at www.example-web.com" : this.state.bio.biography}</p>
                     </div>
                         
 

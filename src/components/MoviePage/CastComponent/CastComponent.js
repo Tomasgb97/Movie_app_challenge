@@ -16,7 +16,7 @@ export class CastComponent extends Component {
 
         const {img, actorname, id} = this.props;
         return (
-            <Link to={`/actors/${id}`} className='actorCard'>
+            <Link data-aos="fade-left" data-aos-duration="500" data-aos-delay="100" to={`/actors/${id}`} className='actorCard'>
                 <img onError={this.addDefaultSrc} className='actorCard__img' alt={actorname} src={img}></img>
                 <h4 className='actorCard__name'>{actorname}</h4>
                 

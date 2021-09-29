@@ -26,7 +26,7 @@ export class Films extends Component {
         const{filmname, img} = this.props;                         //destructure props
 
         return (
-            <div className="filmcard">
+            <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100" className="filmcard">
                 <img onError={this.addDefaultSrc} className="filmcard__img"  alt={`${filmname} poster`} src={img}></img>
                 <h4 className="filmcard__name">{filmname}</h4>
                 

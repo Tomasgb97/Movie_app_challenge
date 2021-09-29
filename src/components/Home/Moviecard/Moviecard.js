@@ -47,7 +47,7 @@ getGenre()}
 
 
         return (
-                <div className="cardContainer">
+                <div data-aos="fade-up" data-aos-duration="1000" className="cardContainer">
                     
                     <div className="upperPart" style={{backgroundImage: `url(https://image.tmdb.org/t/p/w500/${img}), url(../noimage.png)`}}>
                         <div className="upperPart__top">

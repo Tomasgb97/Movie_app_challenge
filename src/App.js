@@ -4,6 +4,8 @@ import Actor from './components/Actor'
 import React, { Component} from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import MyContext from './components/Mycontext'
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 
 
 
@@ -63,6 +65,9 @@ export default class App extends Component {
 
 
   componentDidMount(){
+
+
+    Aos.init();
     
 
     fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`, {    //gets the most popular movies from api and sets them into the state

@@ -97,9 +97,9 @@ componentDidMount(){
                 
 
                 <div className="main__meta">
-                    <h2 className="main__meta__title">{this.state.title}</h2>
-                    <span className="main__meta__genres">{this.state.genres}</span>
-                    <div className="main__meta__flex">
+                    <h2 data-aos="fade-up" data-aos-delay="100" className="main__meta__title">{this.state.title}</h2>
+                    <p data-aos="fade-up" data-aos-delay="150" className="main__meta__genres">{this.state.genres}</p>
+                    <div data-aos="fade-up" data-aos-delay="200" className="main__meta__flex">
                         <Stars stars={this.state.vote_average}></Stars>
                         <span className="main__meta__flex__reviews">{this.state.vote_count} Reviews</span>
                     </div>

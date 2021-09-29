@@ -189,6 +189,19 @@
 
 }
 
+.castcontainer__cards::-webkit-scrollbar {
+    height: 0.3em;
+  }
+   
+  .castcontainer__cards::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+   
+  .castcontainer__cards::-webkit-scrollbar-thumb {
+    background-color: #ff3365;
+    outline: 1px solid #ff3365;
+  }
+
 @media (max-width: 480px){
 
     .main__meta__flex{
