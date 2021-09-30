@@ -11,9 +11,19 @@
 .container__list{
 
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     margin-top: 3rem;
-    padding: 2em;
+    padding-block: 2em;
     width: 100%;
     gap: 2em;
 }
+
+@media (max-width: 480px){
+
+.container__list{
+
+    gap: 1em;
+}
+}
+

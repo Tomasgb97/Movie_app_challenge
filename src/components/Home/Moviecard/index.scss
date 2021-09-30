@@ -1,21 +1,46 @@
+@keyframes ChangeBackground {
+    
+    from {background-color: black;}
+    to {background-color: #ff0040;}
+}
+
+
+.img{
+
+    position: absolute;
+    width: 100%;
+    max-height: 50vh;
+    z-index: -1;
+    top: 0px
+}
+
 .cardContainer{
 
     width: 40%;
+    height: 22rem;
     display: flex;
     flex-direction: column;
-    justify-items: center;
+    justify-content: space-between;
     border: 1px solid rgba(128, 128, 128, 0.521);
     border-radius: 15px;
+    cursor: pointer;
+}
+
+.cardContainer:hover{
+
+    box-shadow: black;
 }
 
 .upperPart{
 
     display: flex;
-    height: 15em;
     flex-direction: column;
     justify-content: space-between;
-    background-color: green;
+    background-position: center;
+    padding-top: 0.5em;
+    height: 86%;
     border-radius: 15px 15px 0px 0px;
+    background-size: cover;
 }
 
 .upperPart__top{
@@ -23,22 +48,15 @@
     display: flex;
     width: 90%;
     align-self: center;
-    margin-top: 0.5em;
-    padding: 0em 1em 0em 1em;
     justify-content: space-between;
+    align-items: center;
 }
-.upperPart__top__filter{
 
-    position: absolute;
-}
-.upperPart__top__img{
-    position: absolute;
-}
 
 .upperPart__top__ageRate{
 
     background-color: #07023178;
-    padding: 0.4em 0.2em 0.4em 0.2em;
+    padding: 0.4em 0.3em 0.4em 0.3em;
     border: 0.5px solid grey;
     border-radius: 5px;
     color: white;
@@ -46,21 +64,43 @@
     font-weight: 600;
 }
 
+.upperPart__top__fav:hover{
+
+    color:red;
+}
+
 .upperPart__bottom{
 
     padding-left: 0.3em;
+    background: linear-gradient(
+    0deg, #01011d 76%, rgba(45, 238, 253, 0) 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
 }
 
 .upperPart__bottom__genre{
 
-    color:rgb(255, 0, 64);
+    color: #ff0040;
     font-size: 0.8em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 87%;
+    display: block;
+    overflow: hidden;
 }
 
 .upperPart__bottom__flex{
 
     display: flex;
+    align-items: center;
     gap: 0.3em;
+    color: white;
+}
+
+.upperPart__bottom__flex__reviews{
+
+    font-size: 0.7em;
 }
 
 
@@ -69,15 +109,28 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    grid-gap: 0.1em;
     gap: 0.1em;
-    padding: 1.5em 0em 0.5em 0.5em;
+    padding: 0.7em 0em 0.5em 0.3em;
     color: white;
+    text-decoration: none;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.lowerPart:hover {
+
+    animation: ChangeBackground 1s forwards ;
 }
 
 .lowerPart__title{
 
     margin: 0em;
-    color: rgb(216, 216, 216);
+    color: #d8d8d8;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 87%;
+    display: block;
+    overflow: hidden;
 }
 .lowerPart__duration{
 
@@ -85,4 +138,30 @@
     font-size: 0.5em;
     font-weight: 600;
     color: grey;
+}
+
+@media (max-width: 480px){
+
+    .cardContainer{
+
+        height: 15rem;
+        width: 45%;
+    }
+}
+
+
+@media (min-width: 1024px) and (max-width: 1920px){
+
+    .cardContainer{
+
+        width: 20%;
+    }
+}
+
+@media (min-width: 1920px){
+
+    .cardContainer{
+
+        height: 33rem;
+    }
 }
