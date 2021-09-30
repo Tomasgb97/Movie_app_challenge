@@ -27,7 +27,7 @@ componentDidMount(){
             })
             .then(
                  response => response.json())
-            .then(r => this.setState({bio: r}, () => console.log(this.state.bio)))}
+            .then(r => this.setState({bio: r}))}
 
 
 
