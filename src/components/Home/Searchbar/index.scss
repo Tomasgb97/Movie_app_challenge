@@ -1,19 +1,20 @@
 
 .searchContainer{
-    width: 100%;
+    margin-top: 44px;
     display: flex;
     justify-content: center;
 }
 .searchContainer__bar{
-    padding: 0.5em 1em;
-    width: 100%;
+    width: 375px;
+    height: 40px;
+    align-items: center;
     display: flex;
-    border-radius: 25px;
-    justify-content: space-between;
-    border: 1px solid white;
+    border-radius: 32px;
+    justify-content: space-around;
+    border: 1px solid #C7C7E7;
 }
 .searchContainer__bar__input{
-    flex: 0.9;
+    flex: 0.8;
     background-color: transparent;
     color: white;
     outline: none;
@@ -22,7 +23,6 @@
 }
 .searchContainer__bar__icon{
 
-    color: grey;
-    font-size: 1.5rem;
+    color: rgba(113, 113, 135, 1);
     cursor: pointer;
 }
