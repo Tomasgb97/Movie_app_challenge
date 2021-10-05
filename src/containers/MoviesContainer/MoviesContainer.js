@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
-import { getGenres } from "../../functions/fetching";
 
 export default class Home extends Component {
   static contextType = MyContext;
@@ -11,17 +10,6 @@ export default class Home extends Component {
     super(props);
 
     this.state = [];
-  }
-
-
-  componentDidMount() {
-    const setGenres = async () => {
-      const genres = await getGenres();
-
-      this.setState(genres);
-    };
-
-    setGenres();
   }
 
   render() {
@@ -55,7 +43,7 @@ export default class Home extends Component {
                     release={release_date}
                     genres={genre_ids}
                     img={poster_path}
-                    genresArray={this.state}
+                    genresArray={this.context.genres}
                   />
                 )
               )

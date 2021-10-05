@@ -3,8 +3,11 @@ import Stars from "../Stars";
 import Age from "../Age";
 import FavHeart from "../FavHeart";
 import { Link } from "react-router-dom";
+import MyContext from "../Mycontext";
+import { findMatchingGenresByProps } from "../../functions/filtering";
 
 export default class Moviecard extends Component {
+  static contextType = MyContext;
   constructor(props) {
     super(props);
 
@@ -12,11 +15,9 @@ export default class Moviecard extends Component {
   }
 
   componentDidMount() {
-    const filteredArray = Object.values(this.props.genresArray).filter(
-      (genre) => this.props.genres.includes(genre.id)
-    ); //filter for ids matches between api genres ids and this movie ids
-    const genresNamesArray = filteredArray.map((genre) => genre.name); //gets the name of the matchig ids
-    this.setState({ genres: genresNamesArray.join(", ") });
+    this.setState({
+      genres: findMatchingGenresByProps(this.context.genres, this.props.genres),
+    });
   }
 
   render() {

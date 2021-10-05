@@ -6,13 +6,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MyContext from "./components/Mycontext";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { fetchTopMovies, fetchQuery } from "./functions/fetching";
+import { fetchTopMovies, fetchQuery, getGenres } from "./functions/fetching";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = { data: [], genres: [] };
 
     this.fetchquery = this.fetchquery.bind(this);
   }
@@ -30,16 +30,28 @@ export default class App extends Component {
 
     const setMovies = async () => {
       let data = await fetchTopMovies();
-      this.setState(data);
+      this.setState({ data: data });
     };
     setMovies();
+
+    const setGenres = async () => {
+      const genres = await getGenres();
+
+      this.setState({ genres: genres });
+    };
+
+    setGenres();
   }
 
   render() {
     return (
       <Router>
         <MyContext.Provider
-          value={{ fetched: this.state, updatefetchstate: this.fetchquery }}
+          value={{
+            genres: this.state.genres,
+            fetched: this.state.data,
+            updatefetchstate: this.fetchquery,
+          }}
         >
           <Switch>
             <Route exact path="/" component={MoviesContainer} />
