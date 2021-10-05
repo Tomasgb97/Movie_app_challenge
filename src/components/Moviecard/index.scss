@@ -1,6 +1,7 @@
 $main-pink: #ff3365;
 $main-blue: rgb(1, 1, 29);
-
+$lighter-blue1: rgba(109, 109, 128, 1);
+$lighter-blue2: rgba(86, 86, 101, 1);
 .img {
   position: absolute;
   width: 100%;
@@ -104,7 +105,7 @@ $main-blue: rgb(1, 1, 29);
   font-size: 8px;
   line-height: 12px;
   font-weight: 800;
-  color: rgba(109, 109, 128, 1);
+  color: $lighter-blue1;
 }
 
 .lowerPart {
@@ -135,5 +136,5 @@ $main-blue: rgb(1, 1, 29);
   font-size: 8px;
   line-height: 12px;
   font-weight: 800;
-  color: rgba(86, 86, 101, 1);
+  color: $lighter-blue2;
 }

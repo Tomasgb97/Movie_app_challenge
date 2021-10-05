@@ -1,12 +1,16 @@
+$light-blue: rgba(64, 64, 86, 0.546214);
+$darker-blue: rgba(34, 34, 50, 0.55);
+$transparent-grey: #8080803b;
+
 .filmcard {
   width: 123px;
   background: radial-gradient(
     73.32% 73.32% at 23.55% 26.12%,
-    rgba(64, 64, 86, 0.546214) 0%,
-    rgba(34, 34, 50, 0.55) 100%
+    $light-blue 0%,
+    $darker-blue 100%
   );
   border-radius: 9px;
-  border: 1px solid #8080803b;
+  border: 1px solid $transparent-grey;
 }
 
 .filmcard__imgcontainer {

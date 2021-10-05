@@ -40,6 +40,8 @@ export default class MoviePage extends Component {
     };
 
     setCast();
+
+    this.context.setActualPage(idNumber);
   }
 
   render() {

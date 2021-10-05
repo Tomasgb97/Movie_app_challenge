@@ -1,7 +1,9 @@
+$mainblue: #191926;
+
 .agetag {
   border-radius: 5px;
   color: white;
-  border: 1px solid #191926;
+  border: 1px solid $mainblue;
   width: 24px;
   height: 24px;
   display: flex;

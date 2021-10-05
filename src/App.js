@@ -12,17 +12,22 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { data: [], genres: [] };
+    this.state = { data: [], genres: [], actualpage: "/" };
 
     this.fetchquery = this.fetchquery.bind(this);
+    this.setActualPage = this.setActualPage.bind(this);
   }
 
   fetchquery(query) {
     //checks for the query param and searches it, unless it's "". in that case the api returns 20 most popular movies.
     this.setState(this.props, async () => {
       const data = await fetchQuery(query);
-      this.setState(data);
+      this.setState({ data: data });
     });
+  }
+
+  setActualPage(param) {
+    this.setState({ actualpage: param });
   }
 
   componentDidMount() {
@@ -50,6 +55,8 @@ export default class App extends Component {
           value={{
             genres: this.state.genres,
             fetched: this.state.data,
+            actualpage: this.state.actualpage,
+            setActualPage: this.setActualPage,
             updatefetchstate: this.fetchquery,
           }}
         >
