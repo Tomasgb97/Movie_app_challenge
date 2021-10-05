@@ -6,6 +6,8 @@ import Stars from "../../components/Stars";
 import Age from "../../components/Age";
 import FavHeart from "../../components/FavHeart";
 import CastComponent from "../../components/CastComponent";
+import { findMatchingGenresByObject } from "../../functions/filtering";
+import { getCast } from "../../functions/fetching";
 
 export default class MoviePage extends Component {
   static contextType = MyContext;
@@ -16,8 +18,8 @@ export default class MoviePage extends Component {
     this.state = {
       adult: "",
       cast: [""],
-      vote_count: "nada",
-      genre_ids: ["nada"],
+      vote_count: "",
+      genre_ids: [""],
     };
   }
 
@@ -28,43 +30,16 @@ export default class MoviePage extends Component {
     ); //finds the movie on the context using the id as query parameter
     this.setState(thisMovie);
 
-    const getGenre = async () => {
-      //fetches for all generes ids on the api and filters them to find the ones that match with this movie genres ids.
-      fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
-        {
-          method: "GET",
-          mode: "cors",
-        }
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          const arrayFromResponse = Object.values(response); //gets all ids
-          const arrayWithGenres = arrayFromResponse[0]; //access to the ids array
-          const filteredArray = arrayWithGenres.filter((genre) =>
-            thisMovie.genre_ids.includes(genre.id)
-          ); //filters to get the ones that matches with this movie
-          const genresNamesArray = filteredArray.map((genre) => genre.name); //get those genre names.
-          this.setState({ genres: genresNamesArray.join(", ") });
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+    this.setState({
+      genres: findMatchingGenresByObject(this.context.genres, thisMovie),
+    });
+
+    const setCast = async () => {
+      const cast = await getCast(idNumber);
+      this.setState({ cast: cast });
     };
 
-    getGenre();
-
-    const getCast = async () => {
-      //gets the cast for this movie throught the api and sets the state to the first 10 cast members;
-
-      await fetch(
-        `https://api.themoviedb.org/3/movie/${idNumber}/credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US)`
-      )
-        .then((r) => r.json())
-        .then((resp) => this.setState({ cast: resp.cast.slice(0, 10) }));
-    };
-
-    getCast();
+    setCast();
   }
 
   render() {

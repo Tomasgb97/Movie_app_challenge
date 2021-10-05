@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
-import Films from '../../components/Films'
+import Films from "../../components/Films";
+import { getActorbio, getActorMovies } from "../../functions/fetching";
 
 export class Actor extends Component {
   constructor(props) {
@@ -12,35 +13,22 @@ export class Actor extends Component {
   componentDidMount() {
     let idNumber = parseInt(this.props.match.params.id); //gets the actor id number from the url parameters
 
-    const getActorBio = async () => {
-      // gets the actor bio throught its Id and sets it as a state
-      fetch(
-        `https://api.themoviedb.org/3/person/${idNumber}?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
-        {
-          method: "GET",
-          mode: "cors",
-        }
-      )
-        .then((response) => response.json())
-        .then((r) => this.setState({ bio: r }));
+    const setActor = async () => {
+      //gets the actor info.
+      const actor = await getActorbio(idNumber);
+
+      this.setState({ bio: actor });
     };
 
-    getActorBio();
+    setActor();
 
-    const getActorMovies = async () => {
+    const setActorMovies = async () => {
       //gets the movies where the actor worked on the cast
-      fetch(
-        `https://api.themoviedb.org/3/person/${idNumber}/movie_credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
-        {
-          method: "GET",
-          mode: "cors",
-        }
-      )
-        .then((response) => response.json())
-        .then((r) => this.setState({ movies: r.cast }));
+      const movies = await getActorMovies(idNumber);
+      this.setState({ movies: movies });
     };
 
-    getActorMovies();
+    setActorMovies();
   }
 
   render() {

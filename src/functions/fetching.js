@@ -30,21 +30,60 @@ const fetchQuery = async (query) => {
   }
 };
 
-const getGenres = async() => {
+const getGenres = async () => {
+  const genresFetch = await fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
+    {
+      //gets all genres from api
+      method: "GET",
+      mode: "cors",
+    }
+  );
 
-    const genresFetch = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
-        {
-          //gets all genres from api
-          method: "GET",
-          mode: "cors",
-        }
-      );
+  const json = await genresFetch.json();
+  return json.genres;
+};
 
-      const json = await genresFetch.json();
-       return json.genres
+const getActorbio = async (idNumber) => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/person/${idNumber}?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
+    {
+      method: "GET",
+      mode: "cors",
+    }
+  );
 
-      
-}
+  const json = await data.json();
+  return json;
+};
 
-export { fetchTopMovies, fetchQuery, getGenres };
+const getActorMovies = async (idNumber) => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/person/${idNumber}/movie_credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
+    {
+      method: "GET",
+      mode: "cors",
+    }
+  );
+
+  const json = await data.json();
+  return json.cast;
+};
+
+const getCast = async (idNumber) => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${idNumber}/credits?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US)`
+  );
+  const json = await data.json();
+  const silcedCast = json.cast.slice(0, 10);
+  return silcedCast;
+};
+
+export {
+  fetchTopMovies,
+  fetchQuery,
+  getGenres,
+  getActorbio,
+  getActorMovies,
+  getCast,
+};
