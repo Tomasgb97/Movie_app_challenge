@@ -27,8 +27,12 @@ export class Films extends Component {
 
         return (
             <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100" className="filmcard">
-                <img onError={this.addDefaultSrc} className="filmcard__img"  alt={`${filmname} poster`} src={img}></img>
-                <h4 className="filmcard__name">{filmname}</h4>
+                <div className="filmcard__imgcontainer">
+                <img onError={this.addDefaultSrc} className="filmcard__imgcontainer__img"  alt={`${filmname} poster`} src={img}></img>
+                </div>
+                <div className="filmcard__namecontainer">
+                <h4 className="filmcard__namecontainer__name">{filmname}</h4>
+                </div>
                 
             </div>
         )

@@ -1,4 +1,21 @@
-.star--filled{
+$main-pink: #ff3365;
 
-    color: #ff3365;
+.stars {
+  display: flex;
+  gap: 2px;
+  font-size: 8px;
+}
+
+.star--unfilled {
+  color: rgba(109, 109, 128, 1);
+}
+.star--filled {
+  color: $main-pink;
+}
+
+.stars--big{
+
+    display: flex;
+    gap: 3px;
+    font-size: 14px;
 }
