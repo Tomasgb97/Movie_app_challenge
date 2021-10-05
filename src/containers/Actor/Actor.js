@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
-import Films from "./Films";
+import Films from '../../components/Films'
 
 export class Actor extends Component {
   constructor(props) {

@@ -13,19 +13,6 @@ After that place that API KEY on your .env file under the name of "REACT__APP__N
 ```bash
 $ npm install
 ```
-![Create category](./public/image-readme1.png)
-* Here is the home screen of the App. If you press on tap the movie name you will be redirected to that movie individual page.
-
-![Create category](./public/image-readme2.png)
-
-* On the movie page, you will see a brief overview of the plot and the main cast members that took part in it. Tapping any member of the cast will redirect you to its personal profile.
-
-![Create category](./public/image-readme3.png)
-
-* Finally once you are on the actor profile page you will be able to check his/her filmography and also down below there will be a little bio for you to read.
-
-
-
 
 ## Technologies
 This app was built using:

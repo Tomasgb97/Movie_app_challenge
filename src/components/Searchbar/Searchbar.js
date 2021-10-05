@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BsSearch } from "react-icons/bs";
-import MyContext from "../../Mycontext";
+import MyContext from "../Mycontext";
 
 export default class Searchbar extends Component {
   static contextType = MyContext;
@@ -10,18 +10,26 @@ export default class Searchbar extends Component {
 
     this.state = "";
 
-    this.handlequerychange = this.handlequerychange.bind(this);
+    this.handleQueryChange = this.handleQueryChange.bind(this);
 
-    this.updatefetch = this.updatefetch.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+
+    this.updateFetch = this.updateFetch.bind(this);
   }
 
-  handlequerychange(e) {
+  handleQueryChange(e) {
     //sets state to searchbar input value
 
     this.setState({ value: e.target.value });
   }
 
-  updatefetch(query) {
+  handleKeyPress(e) {
+    if (e.key === "Enter") {
+      this.updateFetch(this.state);
+    }
+  }
+
+  updateFetch(query) {
     //passes the query parameter to app "App" component in order to modify the context and fetch the queried movies.
 
     this.context.updatefetchstate(query.value);
@@ -32,13 +40,14 @@ export default class Searchbar extends Component {
       <div className="searchContainer">
         <div className="searchContainer__bar">
           <input
-            onChange={this.handlequerychange}
+            onChange={this.handleQueryChange}
             className="searchContainer__bar__input"
             type="text"
+            onKeyPress={this.handleKeyPress}
           ></input>
           <BsSearch
             onClick={() => {
-              this.updatefetch(this.state);
+              this.updateFetch(this.state);
             }}
             className="searchContainer__bar__icon"
           ></BsSearch>

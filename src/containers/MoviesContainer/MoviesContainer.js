@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Searchbar from "./Searchbar";
-import Moviecard from "./Moviecard";
-import MyContext from "../Mycontext";
+import Searchbar from "../../components/Searchbar";
+import Moviecard from "../../components/Moviecard";
+import MyContext from "../../components/Mycontext";
+import { getGenres } from "../../functions/fetching";
 
 export default class Home extends Component {
   static contextType = MyContext;
@@ -9,13 +10,18 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { datos: [] };
+    this.state = [];
   }
 
+
   componentDidMount() {
-    const set = async () =>
-      await this.setState({ datos: Object.values(this.context) }); //sets the "data" state to the context, transformed from object to arrray [this is not working as expected].
-    set();
+    const setGenres = async () => {
+      const genres = await getGenres();
+
+      this.setState(genres);
+    };
+
+    setGenres();
   }
 
   render() {
@@ -25,7 +31,7 @@ export default class Home extends Component {
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {!this.state.datos ? (
+            {Object.values(this.context.fetched) === [] ? (
               <h2 color="white">Loading</h2>
             ) : (
               Object.values(this.context.fetched).map(
@@ -49,15 +55,14 @@ export default class Home extends Component {
                     release={release_date}
                     genres={genre_ids}
                     img={poster_path}
+                    genresArray={this.state}
                   />
                 )
               )
             )}
           </div>
         </div>
-        <div className="container__tap">
-
-        </div>
+        <div className="container__tap"></div>
       </div>
     );
   }
