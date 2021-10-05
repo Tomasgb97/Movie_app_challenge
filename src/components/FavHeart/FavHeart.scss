@@ -1,9 +1,11 @@
+$main-pink: rgba(255, 51, 101, 1);
+
 .favheart--unfilled {
-    color: #ffffff;
+    color: white;
     opacity: 0.75;
   }
 
   .favheart--filled {
-    color: rgba(255, 51, 101, 1);
+    color: $main-pink;
     opacity: 1;
   }

@@ -3,8 +3,11 @@ import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
 import Films from "../../components/Films";
 import { getActorbio, getActorMovies } from "../../functions/fetching";
+import MyContext from "../../components/Mycontext";
 
 export class Actor extends Component {
+  static contextType = MyContext;
+
   constructor(props) {
     super(props);
     this.state = { bio: {}, movies: [] };
@@ -35,7 +38,7 @@ export class Actor extends Component {
     return (
       <div className="body">
         <div className="topflex">
-          <Link to={"/"} className="backbtton">
+          <Link to={`/movies/${this.context.actualpage}`} className="backbtton">
             Back
           </Link>
         </div>
