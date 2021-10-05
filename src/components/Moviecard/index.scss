@@ -138,3 +138,14 @@ $lighter-blue2: rgba(86, 86, 101, 1);
   font-weight: 800;
   color: $lighter-blue2;
 }
+
+@media (min-width: 340px) and (max-width: 375px) {
+  .cardContainer {
+    width: 40%;
+    height: 220px;
+  }
+
+  .upperPart__imagecontainer {
+    height: 173px;
+  }
+}

@@ -1,7 +1,6 @@
 $main-pink: #ff3365;
 $main-blue: rgb(1, 1, 29);
 
-
 .main {
   width: 100%;
   margin: 0px;
@@ -51,7 +50,6 @@ $main-blue: rgb(1, 1, 29);
 .main__upper__topflex__fav {
   cursor: pointer;
 }
-
 
 .main__upper__playicon {
   color: white;
@@ -210,4 +208,106 @@ $main-blue: rgb(1, 1, 29);
 .castcontainer__cards::-webkit-scrollbar-thumb {
   background-color: $main-pink;
   outline: 1px solid $main-pink;
+}
+
+@media (min-width: 700px) and (max-width: 1023px) {
+  .main {
+    gap: 10px;
+  }
+
+  .main__upper__topflex,
+  .main__upper__topflex__backbttn {
+    font-size: 24px;
+  }
+
+  .main__upper__playicon {
+    font-size: 85px;
+  }
+
+  .main__meta h2 {
+    font-size: 52px;
+  }
+
+  .main__meta__genres {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .main__meta__flex__reviews {
+    font-size: 20px;
+  }
+
+  .main__description__storyline {
+    font-size: 21px;
+    line-height: 63px;
+  }
+
+  .main__description__overview,
+  .castcontainer__uppperflex h3 {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  .castcontainer {
+    gap: 13px;
+  }
+
+  .castcontainer__cards {
+    gap: 30px;
+  }
+
+  .imgcontainer {
+    height: 462px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    gap: 51px;
+  }
+
+  .main__upper__topflex,
+  .main__upper__topflex__backbttn {
+    font-size: 30px;
+  }
+
+  .main__upper__playicon {
+    font-size: 119px;
+  }
+
+  .main__meta h2 {
+    font-size: 52px;
+  }
+
+  .main__meta__genres {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
+  .main__meta__flex__reviews {
+    font-size: 20px;
+  }
+
+  .main__description__storyline {
+    font-size: 21px;
+    line-height: 63px;
+  }
+
+  .main__description__overview,
+  .castcontainer__uppperflex h3 {
+    font-size: 20px;
+    line-height: 36px;
+  }
+
+  .castcontainer {
+    gap: 13px;
+  }
+
+  .castcontainer__cards {
+    gap: 60px;
+  }
+
+  .imgcontainer {
+    height: 462px;
+  }
 }

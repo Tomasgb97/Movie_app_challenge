@@ -32,3 +32,14 @@
   width: 65%;
   align-self: baseline;
 }
+
+@media (min-width: 1024px) {
+  .actorCard {
+    gap: 14px;
+  }
+
+  .actorCard__imgcont {
+    height: 120px;
+    width: 120px;
+  }
+}
