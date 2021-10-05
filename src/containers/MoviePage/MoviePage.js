@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import MyContext from "../Mycontext";
+import MyContext from "../../components/Mycontext";
 import { AiFillPlayCircle } from "react-icons/ai";
-import Stars from "../Stars";
-import Age from "../age";
-import FavHeart from "../FavHeart";
-import CastComponent from "./CastComponent";
+import Stars from "../../components/Stars";
+import Age from "../../components/Age";
+import FavHeart from "../../components/FavHeart";
+import CastComponent from "../../components/CastComponent";
 
 export default class MoviePage extends Component {
   static contextType = MyContext;

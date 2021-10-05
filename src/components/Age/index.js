@@ -1,2 +1,2 @@
-import './age.scss'
+import './Age.scss'
 export {default} from './Age'
