@@ -3,14 +3,15 @@ import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
 
-export default class Home extends Component {
+export default class MoviesContainer extends Component {
   static contextType = MyContext;
 
   constructor(props) {
     super(props);
 
-    this.state = [];
+    this.state = {};
   }
+
 
   render() {
     return (
@@ -19,8 +20,8 @@ export default class Home extends Component {
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {Object.values(this.context.fetched) === [] ? (
-              <h2 color="white">Loading</h2>
+            {!Object.values(this.context.fetched) ? (
+              <h1 className="h2">Loading</h1>
             ) : (
               Object.values(this.context.fetched).map(
                 ({

@@ -52,7 +52,6 @@ h1 {
   );
   background-clip: text;
   color: transparent;
-
 }
 
 .imgcontainer__img {
@@ -173,7 +172,12 @@ h1 {
     letter-spacing: 0px;
     text-align: left;
     margin-bottom: 4px;
-    background: linear-gradient(152.39deg, #ECECEC 25.4%, #C4C4C4 52.32%, #FFFFFF 82.83%);
+    background: linear-gradient(
+      152.39deg,
+      #ececec 25.4%,
+      #c4c4c4 52.32%,
+      #ffffff 82.83%
+    );
     background-clip: text;
     color: transparent;
   }
@@ -186,5 +190,74 @@ h1 {
     line-height: 20px;
     letter-spacing: 0px;
     text-align: left;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 1023px){
+
+  .biocontainer h3 {
+    font-size: 27px;
+    line-height: 67px;
+  }
+
+  .biocontainer p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .backbtton {
+    font-size: 20px;
+  }
+
+  .maincontainer {
+    gap: 14px;
+  }
+  .maincontainer h1 {
+    font-size: 70px;
+    line-height: 100px;
+  }
+
+  .maincontainer__profile {
+    gap: 75px;
+  }
+
+  .maincontainer__profile__imgcontainer {
+    width: 130px;
+    height: 130px;
+  }
+
+  .maincontainer__profile__flex__birth {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .maincontainer__profile__flex__department {
+    font-size: 20px;
+  }
+
+  .films__topflex h4 {
+    font-size: 20px;
+    line-height: 75px;
+  }
+
+  .films__topflex p {
+    font-size: 15px;
+  }
+
+  .biocontainer {
+    margin-top: 110px;
+  }
+  .biocontainer h3 {
+    font-size: 27px;
+    line-height: 67px;
+  }
+
+  .biocontainer p {
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 10px;
   }
 }

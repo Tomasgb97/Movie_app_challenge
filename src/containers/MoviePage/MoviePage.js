@@ -64,7 +64,7 @@ export default class MoviePage extends Component {
               <FavHeart></FavHeart>
             </div>
             <AiFillPlayCircle className="main__upper__playicon"></AiFillPlayCircle>
-            <Age boolean={this.state.adult}></Age>
+            <Age big={true} boolean={this.state.adult}></Age>
           </div>
 
           <div className="main__meta">

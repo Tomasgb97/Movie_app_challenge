@@ -96,7 +96,7 @@ export class Actor extends Component {
           <div className="biocontainer">
             <h3>Biography</h3>
 
-            <p data-aos="fade-up" data-aos-duration="200">
+            <p data-aos-offset="80" data-aos="fade-up" data-aos-duration="300">
               {this.state.bio.biography === ""
                 ? "There is no biography for this actor. Feel free to add the required info at www.example-web.com"
                 : this.state.bio.biography}
