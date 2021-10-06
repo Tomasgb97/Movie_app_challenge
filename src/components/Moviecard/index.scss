@@ -139,13 +139,13 @@ $lighter-blue2: rgba(86, 86, 101, 1);
   color: $lighter-blue2;
 }
 
-@media (min-width: 340px) and (max-width: 375px) {
+@media (min-width: 340px) and (max-width: 374px) {
   .cardContainer {
-    width: 40%;
-    height: 220px;
+    width: 45%;
+    height: 236px;
   }
 
   .upperPart__imagecontainer {
-    height: 173px;
+    height: 190px;
   }
 }
