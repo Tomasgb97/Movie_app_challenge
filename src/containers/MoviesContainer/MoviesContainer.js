@@ -12,7 +12,6 @@ export default class MoviesContainer extends Component {
     this.state = {};
   }
 
-
   render() {
     return (
       <div>
@@ -20,8 +19,8 @@ export default class MoviesContainer extends Component {
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {!Object.values(this.context.fetched) ? (
-              <h1 className="h2">Loading</h1>
+            {Object.values(this.context.fetched).length == 0 ? (
+              <h1 className="container__list__nomovie">No movie was found</h1>
             ) : (
               Object.values(this.context.fetched).map(
                 ({
