@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
+import Pagination from "../../components/Pagination";
 
 export default class MoviesContainer extends Component {
   static contextType = MyContext;
@@ -51,6 +52,7 @@ export default class MoviesContainer extends Component {
           </div>
         </div>
         <div className="container__tap"></div>
+        <Pagination/>
       </div>
     );
   }

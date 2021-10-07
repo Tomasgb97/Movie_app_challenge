@@ -1,10 +1,18 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useCallback } from "react";
 import { BsSearch } from "react-icons/bs";
 import MyContext from "../Mycontext";
 
 export default function Searchbar() {
   const [value, setValue] = useState("");
   const context = useContext(MyContext);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      updateFetch(value);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, [value]);
 
   const handleQueryChange = (e) => {
     setValue(e.target.value);
@@ -30,7 +38,7 @@ export default function Searchbar() {
           className="searchContainer__bar__input"
           type="text"
           onKeyPress={handleKeyPress}
-        ></input>
+        />
         <BsSearch
           onClick={() => {
             updateFetch(value);

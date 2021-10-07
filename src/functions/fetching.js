@@ -1,6 +1,7 @@
-const fetchTopMovies = async () => {
+const fetchTopMovies = async (page) => {
+  if(!page){page = 1}
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&page=${page}`,
     {
       //gets the most popular movies from api and sets them into the state
       method: "GET",
@@ -79,6 +80,18 @@ const getCast = async (idNumber) => {
   return silcedCast;
 };
 
+const getMovie = async (idNumber) => {
+  const data = await fetch(
+    `https://api.themoviedb.org/3/movie/${idNumber}?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US`,
+    {
+      method: "GET",
+      mode: "cors",
+    }
+  );
+  const json = await data.json();
+  return json;
+};
+
 export {
   fetchTopMovies,
   fetchQuery,
@@ -86,4 +99,5 @@ export {
   getActorbio,
   getActorMovies,
   getCast,
+  getMovie
 };

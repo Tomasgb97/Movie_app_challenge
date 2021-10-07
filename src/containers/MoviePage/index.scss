@@ -77,7 +77,7 @@ $main-blue: rgb(1, 1, 29);
   font-style: normal;
   font-weight: 800;
   font-size: 40px;
-  line-height: 40px;
+  line-height: normal;
 }
 
 .main__meta__genres {
@@ -226,6 +226,7 @@ $main-blue: rgb(1, 1, 29);
 
   .main__meta h2 {
     font-size: 52px;
+    line-height: normal;
   }
 
   .main__meta__genres {
