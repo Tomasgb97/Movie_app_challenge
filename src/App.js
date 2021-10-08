@@ -1,9 +1,10 @@
 import MoviesContainer from "./containers/MoviesContainer";
 import MoviePage from "./containers/MoviePage";
 import Actor from "./containers/Actor";
+import Favourites from "./containers/Favourites";
+import MyContext from "./components/Mycontext";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MyContext from "./components/Mycontext";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { fetchTopMovies, fetchQuery, getGenres } from "./functions/fetching";
@@ -42,6 +43,9 @@ export default class App extends Component {
   componentDidMount() {
     Aos.init();
 
+    const items = { ...localStorage };
+    console.log(items);
+
     this.setMovies();
 
     const setGenres = async () => {
@@ -63,11 +67,12 @@ export default class App extends Component {
             actualpage: this.state.actualpage,
             setActualPage: this.setActualPage,
             updatefetchstate: this.fetchquery,
-            setmovies: this.setMovies
+            setmovies: this.setMovies,
           }}
         >
           <Switch>
             <Route exact path="/" component={MoviesContainer} />
+            <Route exact path="/favourites" component={Favourites} />
             <Route exact path="/movies/:id" component={MoviePage} />
             <Route exact path="/actors/:id" component={Actor} />
           </Switch>

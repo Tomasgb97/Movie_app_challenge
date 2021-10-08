@@ -1,0 +1,22 @@
+.favourites__container {
+  width: 100%;
+  min-height: 100%;
+}
+
+.favourites__topflex {
+  width: 100%;
+  color: white;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 44px;
+}
+
+.favourites__moviescontainer {
+  margin-top: 30px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 30px;
+}

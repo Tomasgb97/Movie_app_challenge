@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Films(props) {
@@ -18,13 +18,13 @@ export default function Films(props) {
       className="filmcard"
     >
       <div className="filmcard__imgcontainer">
-      <Link to={`/movies/${id}`}>
-        <img
-          onError={addDefaultSrc}
-          className="filmcard__imgcontainer__img"
-          alt={`${filmName} poster`}
-          src={img}
-        ></img>
+        <Link to={`/movies/${id}`}>
+          <img
+            onError={addDefaultSrc}
+            className="filmcard__imgcontainer__img"
+            alt={`${filmName} poster`}
+            src={img}
+          ></img>
         </Link>
       </div>
       <div className="filmcard__namecontainer">

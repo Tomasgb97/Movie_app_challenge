@@ -20,7 +20,7 @@ export default class MoviesContainer extends Component {
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {Object.values(this.context.fetched).length == 0 ? (
+            {Object.values(this.context.fetched).length === 0 ? (
               <h1 className="container__list__nomovie">No movie was found</h1>
             ) : (
               Object.values(this.context.fetched).map(
@@ -52,7 +52,7 @@ export default class MoviesContainer extends Component {
           </div>
         </div>
         <div className="container__tap"></div>
-        <Pagination/>
+        <Pagination />
       </div>
     );
   }

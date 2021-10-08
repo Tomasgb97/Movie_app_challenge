@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import MyContext from "../../components/Mycontext";
 import { AiFillPlayCircle } from "react-icons/ai";
 import Stars from "../../components/Stars";
@@ -19,7 +19,6 @@ export default class MoviePage extends Component {
       adult: "",
       cast: [""],
       vote_count: "",
-      genre_ids: [""],
       fetchedgenres: "",
       movie: {},
       genres: "",

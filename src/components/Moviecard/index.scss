@@ -43,10 +43,12 @@ $lighter-blue2: rgba(86, 86, 101, 1);
     #191926 87.5%
   );
 }
+
 .upperPart__imagecontainer__link {
-  position: absolute;
-  height: 100%;
   width: 100%;
+  height: 86%;
+  position: absolute;
+  bottom: 0px;
 }
 
 .upperPart__imagecontainer__image {
@@ -55,7 +57,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
   border-radius: 8px 8px 0px 0px;
   width: 100%;
   height: 100%;
-  position: relative;
+  position: absolute;
 }
 
 .upperPart__top {
@@ -138,7 +140,6 @@ $lighter-blue2: rgba(86, 86, 101, 1);
   font-weight: 800;
   color: $lighter-blue2;
 }
-
 
 @media (min-width: 340px) and (max-width: 374px) {
   .cardContainer {

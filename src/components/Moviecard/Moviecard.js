@@ -5,15 +5,40 @@ import FavHeart from "../FavHeart";
 import { Link } from "react-router-dom";
 import MyContext from "../Mycontext";
 import { findMatchingGenresByProps } from "../../functions/filtering";
+import {
+  addMovieToFavs,
+  clearFavList,
+  deleteMovieFromFavs,
+  isMovieFav,
+  setNewFavList,
+} from "../Favlist";
 
 export default function Moviecard(props) {
   const context = useContext(MyContext);
 
   const [genres, setGenres] = useState([]);
 
+  const [faved, setFaved] = useState(false);
+
   useEffect(() => {
     setGenres(findMatchingGenresByProps(context.genres, props.genres));
   }, [props]);
+
+  useEffect(() => {
+    if (isMovieFav(id)) {
+      setFaved(true);
+    }
+  }, []);
+
+  const fav = () => {
+    addMovieToFavs(id);
+    setFaved(true);
+  };
+
+  const unfav = () => {
+    deleteMovieFromFavs(id);
+    setFaved(false);
+  };
 
   const { img, adult, reviews, stars, id, title, release } = props;
 
@@ -21,10 +46,21 @@ export default function Moviecard(props) {
     <div data-aos="fade-up" data-aos-duration="1000" className="cardContainer">
       <div className="upperPart">
         <div className="upperPart__imagecontainer">
-          <Link
-            className="upperPart__imagecontainer__link"
-            to={`/movies/${id}`}
-          >
+          <div>
+            <div className="upperPart__top">
+              <Age boolean={adult}></Age>
+              <div
+                onClick={() => {
+                  faved ? unfav() : fav();
+                }}
+              >
+                <FavHeart isfav={faved ? true : false}></FavHeart>
+              </div>
+            </div>
+            <Link
+              className="upperPart__imagecontainer__link"
+              to={`/movies/${id}`}
+            ></Link>
             <img
               alt="poster"
               className="upperPart__imagecontainer__image"
@@ -34,7 +70,7 @@ export default function Moviecard(props) {
                 e.target.src = "./noimage.png";
               }}
             ></img>
-          </Link>
+          </div>
           <div className="upperPart__bottom">
             <span className="upperPart__bottom__genre">{genres}</span>
             <div className="upperPart__bottom__flex">
@@ -43,10 +79,6 @@ export default function Moviecard(props) {
                 {reviews} Reviews
               </span>
             </div>
-          </div>
-          <div className="upperPart__top">
-            <Age boolean={adult}></Age>
-            <FavHeart></FavHeart>
           </div>
         </div>
       </div>
