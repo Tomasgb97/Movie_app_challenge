@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
+import Pagination from "../../components/Pagination";
+import FavsBttn from "../../components/FavsBttn";
 
 export default class MoviesContainer extends Component {
   static contextType = MyContext;
@@ -15,11 +17,12 @@ export default class MoviesContainer extends Component {
   render() {
     return (
       <div>
+        <FavsBttn/>
         <div className="container">
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {Object.values(this.context.fetched).length == 0 ? (
+            {Object.values(this.context.fetched).length === 0 ? (
               <h1 className="container__list__nomovie">No movie was found</h1>
             ) : (
               Object.values(this.context.fetched).map(
@@ -51,6 +54,7 @@ export default class MoviesContainer extends Component {
           </div>
         </div>
         <div className="container__tap"></div>
+        <Pagination />
       </div>
     );
   }

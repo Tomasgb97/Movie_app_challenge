@@ -85,9 +85,10 @@ export class Actor extends Component {
             <div className="films__cardscontainer">
               {this.state.movies.map((movie) => (
                 <Films
-                  filmname={movie.title}
+                  filmName={movie.title}
                   img={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                   key={movie.id}
+                  id={movie.id}
                 ></Films>
               ))}
             </div>

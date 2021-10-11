@@ -1,0 +1,30 @@
+$main-pink: #ff3365;
+
+.pagination {
+  position: relative;
+  margin: 80px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+  width: 100%;
+  justify-content: center;
+
+  & > .active {
+    & > a,
+    & > span,
+    & > a:hover,
+    & > span:hover,
+    & > a:focus,
+    & > span:focus {
+      background-color: #ececec26;
+      border: 2px solid;
+      border-radius: 50px;
+    }
+  }
+
+  & > li > a {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: $main-pink;
+  }
+}

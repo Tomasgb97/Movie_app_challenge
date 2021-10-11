@@ -6,8 +6,13 @@ import Stars from "../../components/Stars";
 import Age from "../../components/Age";
 import FavHeart from "../../components/FavHeart";
 import CastComponent from "../../components/CastComponent";
-import { findMatchingGenresByObject } from "../../functions/filtering";
-import { getCast } from "../../functions/fetching";
+import { findMatchingGenres } from "../../functions/filtering";
+import { getCast, getMovie } from "../../functions/fetching";
+import {
+  isMovieFav,
+  deleteMovieFromFavs,
+  addMovieToFavs,
+} from "../../components/Favlist";
 
 export default class MoviePage extends Component {
   static contextType = MyContext;
@@ -19,20 +24,75 @@ export default class MoviePage extends Component {
       adult: "",
       cast: [""],
       vote_count: "",
-      genre_ids: [""],
+      fetchedgenres: "",
+      movie: {},
+      genres: "",
+      isfav: false,
     };
+
+    this.favAction = this.favAction.bind(this);
+  }
+
+  favAction() {
+    if (this.state.isfav) {
+      this.setState({ isfav: false });
+      deleteMovieFromFavs(this.state.movie.id);
+    } else {
+      this.setState({ isfav: true });
+      addMovieToFavs(this.state.movie.id);
+    }
   }
 
   componentDidMount() {
     let idNumber = parseInt(this.props.match.params.id); //gets id of the movie and formats it;
-    let thisMovie = Object.values(this.context.fetched).find(
-      (movie) => movie.id === idNumber
-    ); //finds the movie on the context using the id as query parameter
-    this.setState(thisMovie);
 
-    this.setState({
-      genres: findMatchingGenresByObject(this.context.genres, thisMovie),
-    });
+    let movieIsFetched = Object.values(this.context.fetched).find(
+      (movie) => movie.id === idNumber
+    );
+
+    const setmovie = async () => {
+      if (movieIsFetched !== undefined) {
+        this.setState({
+          movie: movieIsFetched,
+          fetchedgenres: movieIsFetched.genre_ids,
+        });
+
+        await this.setState({
+          genres: findMatchingGenres(
+            this.context.genres,
+            movieIsFetched.genre_ids
+          ),
+        });
+      } else {
+        const movie = await getMovie(idNumber);
+        let genres = movie.genres.map((one) => one.id);
+        this.setState({
+          movie: {
+            title: movie.title,
+            poster_path: movie.poster_path,
+            adult: movie.adult,
+            vote_count: movie.vote_count,
+            overview: movie.overview,
+            vote_average: movie.vote_average,
+            id: movie.id,
+          },
+          fetchedgenres: genres,
+        });
+      }
+
+      this.setState({
+        genres: findMatchingGenres(
+          this.context.genres,
+          this.state.fetchedgenres
+        ),
+      });
+    };
+
+    if (isMovieFav(idNumber)) {
+      this.setState({ isfav: true });
+    }
+
+    setmovie();
 
     const setCast = async () => {
       const cast = await getCast(idNumber);
@@ -49,9 +109,9 @@ export default class MoviePage extends Component {
       <div className="body">
         <div className="imgcontainer">
           <img
-            alt={`${this.state.title} poster`}
+            alt={`${this.state.movie.title} poster`}
             className="imgcontainer__img"
-            src={`https://image.tmdb.org/t/p/w500/${this.state.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`}
           ></img>
         </div>
 
@@ -61,10 +121,12 @@ export default class MoviePage extends Component {
               <Link to={"/"} className="main__upper__topflex__backbttn">
                 Back
               </Link>
-              <FavHeart></FavHeart>
+              <div style={{ cursor: `pointer` }} onClick={this.favAction}>
+                <FavHeart isfav={this.state.isfav}></FavHeart>
+              </div>
             </div>
             <AiFillPlayCircle className="main__upper__playicon"></AiFillPlayCircle>
-            <Age big={true} boolean={this.state.adult}></Age>
+            <Age big={true} boolean={this.state.movie.adult}></Age>
           </div>
 
           <div className="main__meta">
@@ -73,7 +135,7 @@ export default class MoviePage extends Component {
               data-aos-delay="100"
               className="main__meta__title"
             >
-              {this.state.title}
+              {this.state.movie.title}
             </h2>
             <p
               data-aos="fade-up"
@@ -87,16 +149,18 @@ export default class MoviePage extends Component {
               data-aos-delay="200"
               className="main__meta__flex"
             >
-              <Stars big={true} stars={this.state.vote_average}></Stars>
+              <Stars big={true} stars={this.state.movie.vote_average}></Stars>
               <span className="main__meta__flex__reviews">
-                {this.state.vote_count} Reviews
+                {this.state.movie.vote_count} Reviews
               </span>
             </div>
           </div>
 
           <section className="main__description">
             <h3 className="main__description__storyline">Storyline</h3>
-            <p className="main__description__overview">{this.state.overview}</p>
+            <p className="main__description__overview">
+              {this.state.movie.overview}
+            </p>
           </section>
 
           <div className="castcontainer">
