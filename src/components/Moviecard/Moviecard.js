@@ -4,13 +4,12 @@ import Age from "../Age";
 import FavHeart from "../FavHeart";
 import { Link } from "react-router-dom";
 import MyContext from "../Mycontext";
-import { findMatchingGenresByProps } from "../../functions/filtering";
+import { findMatchingGenres } from "../../functions/filtering";
 import {
   addMovieToFavs,
-  clearFavList,
   deleteMovieFromFavs,
+  favList,
   isMovieFav,
-  setNewFavList,
 } from "../Favlist";
 
 export default function Moviecard(props) {
@@ -21,12 +20,15 @@ export default function Moviecard(props) {
   const [faved, setFaved] = useState(false);
 
   useEffect(() => {
-    setGenres(findMatchingGenresByProps(context.genres, props.genres));
+    setGenres(findMatchingGenres(context.genres, props.genres));
   }, [props]);
 
   useEffect(() => {
     if (isMovieFav(id)) {
       setFaved(true);
+      console.log(favList);
+    } else {
+      setFaved(false);
     }
   }, []);
 

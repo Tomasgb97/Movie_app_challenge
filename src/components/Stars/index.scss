@@ -4,6 +4,12 @@ $main-pink: #ff3365;
   display: flex;
   gap: 2px;
   font-size: 8px;
+
+  &.--bigstars {
+    display: flex;
+    gap: 3px;
+    font-size: 14px;
+  }
 }
 
 .star--unfilled {
@@ -11,11 +17,4 @@ $main-pink: #ff3365;
 }
 .star--filled {
   color: $main-pink;
-}
-
-.stars--big{
-
-    display: flex;
-    gap: 3px;
-    font-size: 14px;
 }

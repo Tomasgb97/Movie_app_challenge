@@ -6,8 +6,13 @@ import Stars from "../../components/Stars";
 import Age from "../../components/Age";
 import FavHeart from "../../components/FavHeart";
 import CastComponent from "../../components/CastComponent";
-import { findMatchingGenresByObject } from "../../functions/filtering";
+import { findMatchingGenres } from "../../functions/filtering";
 import { getCast, getMovie } from "../../functions/fetching";
+import {
+  isMovieFav,
+  deleteMovieFromFavs,
+  addMovieToFavs,
+} from "../../components/Favlist";
 
 export default class MoviePage extends Component {
   static contextType = MyContext;
@@ -22,7 +27,20 @@ export default class MoviePage extends Component {
       fetchedgenres: "",
       movie: {},
       genres: "",
+      isfav: false,
     };
+
+    this.favAction = this.favAction.bind(this);
+  }
+
+  favAction() {
+    if (this.state.isfav) {
+      this.setState({ isfav: false });
+      deleteMovieFromFavs(this.state.movie.id);
+    } else {
+      this.setState({ isfav: true });
+      addMovieToFavs(this.state.movie.id);
+    }
   }
 
   componentDidMount() {
@@ -40,7 +58,7 @@ export default class MoviePage extends Component {
         });
 
         await this.setState({
-          genres: findMatchingGenresByObject(
+          genres: findMatchingGenres(
             this.context.genres,
             movieIsFetched.genre_ids
           ),
@@ -56,18 +74,23 @@ export default class MoviePage extends Component {
             vote_count: movie.vote_count,
             overview: movie.overview,
             vote_average: movie.vote_average,
+            id: movie.id,
           },
           fetchedgenres: genres,
         });
       }
 
       this.setState({
-        genres: findMatchingGenresByObject(
+        genres: findMatchingGenres(
           this.context.genres,
           this.state.fetchedgenres
         ),
       });
     };
+
+    if (isMovieFav(idNumber)) {
+      this.setState({ isfav: true });
+    }
 
     setmovie();
 
@@ -98,7 +121,9 @@ export default class MoviePage extends Component {
               <Link to={"/"} className="main__upper__topflex__backbttn">
                 Back
               </Link>
-              <FavHeart></FavHeart>
+              <div style={{ cursor: `pointer` }} onClick={this.favAction}>
+                <FavHeart isfav={this.state.isfav}></FavHeart>
+              </div>
             </div>
             <AiFillPlayCircle className="main__upper__playicon"></AiFillPlayCircle>
             <Age big={true} boolean={this.state.movie.adult}></Age>

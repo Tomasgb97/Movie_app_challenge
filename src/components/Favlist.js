@@ -33,11 +33,10 @@ const clearFavList = () => {
   localStorage.setItem("favourites", JSON.stringify(favList));
 };
 
-const setNewFavList = (array)=>{
-
-    localStorage.removeItem("favourites");
-    localStorage.setItem("favourites", JSON.stringify(array))
-}
+const setNewFavList = (array) => {
+  localStorage.setItem("favourites", JSON.stringify(array));
+  favList = array;
+};
 
 export {
   addMovieToFavs,

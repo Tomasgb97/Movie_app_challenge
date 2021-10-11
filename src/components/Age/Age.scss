@@ -13,28 +13,10 @@ $mainblue: #191926;
   font-size: 12px;
   font-weight: 800;
   align-self: flex-start;
-
 }
 
-.agetag--big {
-  border-radius: 5px;
-  color: white;
-  border: 1px solid $mainblue;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(25, 25, 38, 1);
-  font-size: 12px;
-  font-weight: 800;
-  align-self: flex-start;
-}
-
-@media  (min-width: 1024px){
-
-  .agetag--big{
-
+@media (min-width: 1024px) {
+  .--big {
     width: 40px;
     height: 40px;
     font-size: 24px;

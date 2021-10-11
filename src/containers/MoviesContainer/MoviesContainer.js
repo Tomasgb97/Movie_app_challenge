@@ -3,6 +3,7 @@ import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
 import Pagination from "../../components/Pagination";
+import FavsBttn from "../../components/FavsBttn";
 
 export default class MoviesContainer extends Component {
   static contextType = MyContext;
@@ -16,6 +17,7 @@ export default class MoviesContainer extends Component {
   render() {
     return (
       <div>
+        <FavsBttn/>
         <div className="container">
           <Searchbar></Searchbar>
 

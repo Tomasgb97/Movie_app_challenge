@@ -23,7 +23,7 @@ export default function Stars(props) {
   }, [props]);
 
   return (
-    <div className={big ? "stars--big" : "stars"}>
+    <div className={big ? "stars --bigstars" : "stars"}>
       {Object.values(array).map((each) => each)}
     </div>
   );

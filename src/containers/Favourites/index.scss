@@ -1,22 +1,53 @@
 .favourites__container {
   width: 100%;
   min-height: 100%;
+  padding-inline: 14px;
+  user-select: none;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+
+  .favourites__topflex {
+    width: 100%;
+    color: white;
+    align-items: center;
+    height: 40px;
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr 20fr;
+    grid-template-rows: 1fr;
+
+    h2 {
+      opacity: 0.75;
+      color: rgba(255, 255, 255, 1);
+    }
+
+    a {
+      outline: none;
+      text-decoration: none;
+      cursor: pointer;
+      color: grey;
+    }
+  }
+
+  .favourites__moviescontainer {
+    margin-top: 30px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+  }
 }
 
-.favourites__topflex {
-  width: 100%;
-  color: white;
-  background-color: red;
-  display: flex;
-  align-items: center;
-  height: 40px;
-  margin-top: 44px;
+@media (min-width: 767px) {
+  .favourites__container .favourites__moviescontainer {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.favourites__moviescontainer {
-  margin-top: 30px;
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: 30px;
+@media (min-width: 1520px) {
+  .favourites__container .favourites__moviescontainer {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
