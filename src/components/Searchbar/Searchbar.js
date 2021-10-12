@@ -27,7 +27,7 @@ export default function Searchbar() {
   const updateFetch = (query) => {
     //passes the query parameter to app "App" component in order to modify the context and fetch the queried movies.
 
-    context.updatefetchstate(query);
+    context.updateFetchState(query);
   };
 
   return (
