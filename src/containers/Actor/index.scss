@@ -140,15 +140,15 @@ $main-pink: #ff3365;
       overflow-x: auto;
       overflow-y: hidden;
 
-      .films__cardscontainer::-webkit-scrollbar {
+      &::-webkit-scrollbar {
         height: 0.3em;
       }
 
-      .films__cardscontainer::-webkit-scrollbar-track {
+      &::-webkit-scrollbar-track {
         box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
       }
 
-      .films__cardscontainer::-webkit-scrollbar-thumb {
+      &::-webkit-scrollbar-thumb {
         background-color: $main-pink;
         outline: 1px solid $main-pink;
       }

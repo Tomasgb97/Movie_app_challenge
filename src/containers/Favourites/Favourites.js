@@ -45,7 +45,8 @@ export default class Favourites extends Component {
           <h2>Favourite Movies</h2>
         </div>
         <div className="favourites__moviescontainer">
-          {movies.map((movieid) => (
+          {movies.length === 0 ? 
+          <h1 className="favourites__nomovie">There are no favourite movies to display</h1> : movies.map((movieid) => (
             <FavMovieCard
               key={movieid}
               removeMovie={this.removeMovie}
