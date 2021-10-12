@@ -35,7 +35,7 @@ export default class Favourites extends Component {
     setNewFavList(this.state.movies);
   }
   render() {
-    const { movies } = this.state.movies;
+    const { movies } = this.state;
     return (
       <div className="favourites__container">
         <div className="favourites__topflex">

@@ -4,7 +4,7 @@ import MyContext from "../Mycontext";
 
 export default function Pagination() {
   const context = useContext(MyContext);
-  const { setmovies } = context;
+  const { setMovies } = context;
 
   return (
     <div>
@@ -18,7 +18,7 @@ export default function Pagination() {
         pageCount={500}
         marginPagesDisplayed={1}
         pageRangeDisplayed={window.screen.width >= 390 ? 3 : 1}
-        onPageChange={(e) => setmovies(e.selected + 1)}
+        onPageChange={(e) => setMovies(e.selected + 1)}
       />
     </div>
   );

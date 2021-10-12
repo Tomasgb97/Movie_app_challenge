@@ -58,16 +58,18 @@ export default class App extends Component {
   }
 
   render() {
+
+    const { genres, data, actualpage} = this.state
     return (
       <Router>
         <MyContext.Provider
           value={{
-            genres: this.state.genres,
-            fetched: this.state.data,
-            actualpage: this.state.actualpage,
+            genres: genres,
+            fetched: data,
+            actualpage: actualpage,
             setActualPage: this.setActualPage,
-            updatefetchstate: this.fetchquery,
-            setmovies: this.setMovies,
+            updateFetchState: this.fetchquery,
+            setMovies: this.setMovies,
           }}
         >
           <Switch>
