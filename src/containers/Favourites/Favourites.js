@@ -35,6 +35,7 @@ export default class Favourites extends Component {
     setNewFavList(this.state.movies);
   }
   render() {
+    const { movies } = this.state.movies;
     return (
       <div className="favourites__container">
         <div className="favourites__topflex">
@@ -44,7 +45,7 @@ export default class Favourites extends Component {
           <h2>Favourite Movies</h2>
         </div>
         <div className="favourites__moviescontainer">
-          {this.state.movies.map((movieid) => (
+          {movies.map((movieid) => (
             <FavMovieCard
               key={movieid}
               removeMovie={this.removeMovie}

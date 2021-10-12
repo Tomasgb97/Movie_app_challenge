@@ -105,13 +105,15 @@ export default class MoviePage extends Component {
   }
 
   render() {
+    const { movie, isfav, genres, cast } = this.state;
+
     return (
       <div className="body">
         <div className="imgcontainer">
           <img
-            alt={`${this.state.movie.title} poster`}
+            alt={`${movie.title} poster`}
             className="imgcontainer__img"
-            src={`https://image.tmdb.org/t/p/w500/${this.state.movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
           ></img>
         </div>
 
@@ -122,11 +124,11 @@ export default class MoviePage extends Component {
                 Back
               </Link>
               <div style={{ cursor: `pointer` }} onClick={this.favAction}>
-                <FavHeart isfav={this.state.isfav}></FavHeart>
+                <FavHeart isfav={isfav}></FavHeart>
               </div>
             </div>
             <AiFillPlayCircle className="main__upper__playicon"></AiFillPlayCircle>
-            <Age big={true} boolean={this.state.movie.adult}></Age>
+            <Age big={true} boolean={movie.adult}></Age>
           </div>
 
           <div className="main__meta">
@@ -135,32 +137,30 @@ export default class MoviePage extends Component {
               data-aos-delay="100"
               className="main__meta__title"
             >
-              {this.state.movie.title}
+              {movie.title}
             </h2>
             <p
               data-aos="fade-up"
               data-aos-delay="150"
               className="main__meta__genres"
             >
-              {this.state.genres}
+              {genres}
             </p>
             <div
               data-aos="fade-up"
               data-aos-delay="200"
               className="main__meta__flex"
             >
-              <Stars big={true} stars={this.state.movie.vote_average}></Stars>
+              <Stars big={true} stars={movie.vote_average}></Stars>
               <span className="main__meta__flex__reviews">
-                {this.state.movie.vote_count} Reviews
+                {movie.vote_count} Reviews
               </span>
             </div>
           </div>
 
           <section className="main__description">
             <h3 className="main__description__storyline">Storyline</h3>
-            <p className="main__description__overview">
-              {this.state.movie.overview}
-            </p>
+            <p className="main__description__overview">{movie.overview}</p>
           </section>
 
           <div className="castcontainer">
@@ -169,7 +169,7 @@ export default class MoviePage extends Component {
               <p>see all</p>
             </div>
             <div className="castcontainer__cards">
-              {this.state.cast.map((castmember) => (
+              {cast.map((castmember) => (
                 <CastComponent
                   key={castmember.id}
                   id={castmember.id}
