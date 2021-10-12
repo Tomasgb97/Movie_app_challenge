@@ -35,6 +35,8 @@ export class Actor extends Component {
   }
 
   render() {
+    const { movies, bio } = this.state;
+
     return (
       <div className="body">
         <div className="topflex">
@@ -44,14 +46,14 @@ export class Actor extends Component {
         </div>
         <div className="imgcontainer">
           <img
-            alt={`${this.state.bio.name} poster`}
+            alt={`${bio.name} poster`}
             className="imgcontainer__img"
-            src={`https://image.tmdb.org/t/p/w500/${this.state.bio.profile_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${bio.profile_path}`}
           ></img>
         </div>
         <div className="maincontainer">
           <h1 data-aos="fade-left" data-aos-duration="500" data-aos-delay="100">
-            {this.state.bio.name}
+            {bio.name}
           </h1>
           <div className="maincontainer__profile">
             <div className="maincontainer__profile__imgcontainer">
@@ -60,19 +62,19 @@ export class Actor extends Component {
                 data-aos-duration="500"
                 data-aos-delay="100"
                 className="maincontainer__profile__imgcontainer__img"
-                alt={`${this.state.bio.name} poster`}
-                src={`https://image.tmdb.org/t/p/w500/${this.state.bio.profile_path}`}
+                alt={`${bio.name} poster`}
+                src={`https://image.tmdb.org/t/p/w500/${bio.profile_path}`}
               ></img>
             </div>
             <div className="maincontainer__profile__flex">
               <p className="maincontainer__profile__flex__birth">
-                {dateFormat(this.state.bio.birthday, "longDate")}
+                {dateFormat(bio.birthday, "longDate")}
               </p>
               <p className="maincontainer__profile__flex__place">
-                {this.state.bio.place_of_birth}
+                {bio.place_of_birth}
               </p>
               <p className="maincontainer__profile__flex__department">
-                {this.state.bio.known_for_department}
+                {bio.known_for_department}
               </p>
             </div>
           </div>
@@ -83,7 +85,7 @@ export class Actor extends Component {
               <p>See all</p>
             </div>
             <div className="films__cardscontainer">
-              {this.state.movies.map((movie) => (
+              {movies.map((movie) => (
                 <Films
                   filmName={movie.title}
                   img={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
@@ -98,9 +100,9 @@ export class Actor extends Component {
             <h3>Biography</h3>
 
             <p data-aos-offset="80" data-aos="fade-up" data-aos-duration="300">
-              {this.state.bio.biography === ""
+              {bio.biography === ""
                 ? "There is no biography for this actor. Feel free to add the required info at www.example-web.com"
-                : this.state.bio.biography}
+                : bio.biography}
             </p>
           </div>
         </div>

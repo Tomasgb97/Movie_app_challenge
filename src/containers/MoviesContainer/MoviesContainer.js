@@ -15,17 +15,18 @@ export default class MoviesContainer extends Component {
   }
 
   render() {
+    const { fetched, genres } = this.context;
     return (
       <div>
-        <FavsBttn/>
+        <FavsBttn />
         <div className="container">
           <Searchbar></Searchbar>
 
           <div className="container__list">
-            {Object.values(this.context.fetched).length === 0 ? (
+            {Object.values(fetched).length === 0 ? (
               <h1 className="container__list__nomovie">No movie was found</h1>
             ) : (
-              Object.values(this.context.fetched).map(
+              Object.values(fetched).map(
                 ({
                   adult,
                   genre_ids,
@@ -46,7 +47,7 @@ export default class MoviesContainer extends Component {
                     release={release_date}
                     genres={genre_ids}
                     img={poster_path}
-                    genresArray={this.context.genres}
+                    genresArray={genres}
                   />
                 )
               )

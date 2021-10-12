@@ -5,9 +5,10 @@ import FavHeart from "../FavHeart";
 export default function FavsBttn() {
   return (
     <Link to={`/favourites`}>
-      <div className="Favsbttn">Favs 
-      <FavHeart/></div>
-      
+      <div className="Favsbttn">
+        Favs
+        <FavHeart />
+      </div>
     </Link>
   );
 }
