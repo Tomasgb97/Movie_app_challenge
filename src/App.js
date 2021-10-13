@@ -58,8 +58,7 @@ export default class App extends Component {
   }
 
   render() {
-
-    const { genres, data, actualpage} = this.state
+    const { genres, data, actualpage } = this.state;
     return (
       <Router>
         <MyContext.Provider

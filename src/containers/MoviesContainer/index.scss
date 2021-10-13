@@ -8,11 +8,11 @@
   .container__list {
     margin-top: 54px;
     width: 100%;
-    padding-inline: 16px;
-    grid-gap: 24px;
-    display: grid;
+    padding-inline: 14px;
+    grid-gap: 15px;
     justify-content: center;
-    grid-template-columns: repeat(auto-fill, 158px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 165px);
 
     .container__list__nomovie {
       text-align: center;
