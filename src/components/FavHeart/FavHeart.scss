@@ -11,10 +11,12 @@ $main-pink: rgba(255, 51, 101, 1);
 .favheart--unfilled {
   color: white;
   opacity: 0.75;
+  cursor: pointer;
 }
 
 .favheart--filled {
   color: $main-pink;
   opacity: 1;
   animation: grow 1s;
+  cursor: pointer;
 }
