@@ -1,8 +1,8 @@
 import React from "react";
 
 interface Props {
-  boolean: boolean,
-  big: boolean
+  boolean: boolean;
+  big: boolean;
 }
 
 function Age({ boolean, big }: Props) {

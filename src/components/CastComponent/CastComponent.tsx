@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface propsInterface{
-  
-  img: string,
-  actorname: string,
-  id: number
+interface propsInterface {
+  img: string;
+  actorname: string;
+  id: number;
 }
 
 export default function CastComponent(props: propsInterface) {
