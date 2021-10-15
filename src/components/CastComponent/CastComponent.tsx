@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface propsInterface {
+interface PropsInterface {
   img: string;
   actorname: string;
   id: number;
 }
 
-export default function CastComponent(props: propsInterface) {
-  const { img, actorname, id } = props;
+const CastComponent: React.FC<PropsInterface> = ({actorname,id,img,children}) => {
+  
 
   const addDefaultSrc = (ev: React.SyntheticEvent<HTMLImageElement, Event>) => {
     //sets a default image in case the src link provided by the api dosen't return any.
@@ -35,3 +35,5 @@ export default function CastComponent(props: propsInterface) {
     </Link>
   );
 }
+
+export default CastComponent;

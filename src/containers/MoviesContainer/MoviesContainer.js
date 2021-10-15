@@ -45,7 +45,7 @@ export default class MoviesContainer extends Component {
                     reviews={vote_count}
                     adult={adult}
                     release={release_date}
-                    genres={genre_ids}
+                    genresids={genre_ids}
                     img={poster_path}
                     genresArray={genres}
                   />

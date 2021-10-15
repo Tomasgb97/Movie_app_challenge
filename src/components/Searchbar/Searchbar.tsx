@@ -2,8 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import MyContext from "../Mycontext";
 
-export default function Searchbar() {
-  const [value, setValue] = useState("");
+const Searchbar: React.FC = () => {
+  const [value, setValue] = useState<string>("");
   const context = useContext(MyContext);
 
   useEffect(() => {
@@ -14,17 +14,17 @@ export default function Searchbar() {
     return () => clearTimeout(timeout);
   }, [value]);
 
-  const handleQueryChange = (e) => {
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       updateFetch(value);
     }
   };
 
-  const updateFetch = (query) => {
+  const updateFetch = (query: string) => {
     //passes the query parameter to app "App" component in order to modify the context and fetch the queried movies.
 
     context.updateFetchState(query);
@@ -48,4 +48,6 @@ export default function Searchbar() {
       </div>
     </div>
   );
-}
+};
+
+export default Searchbar;

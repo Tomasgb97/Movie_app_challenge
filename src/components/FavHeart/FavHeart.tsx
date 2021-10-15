@@ -1,14 +1,16 @@
 import React from "react";
 import { FaHeart } from "react-icons/fa";
 
-interface propsInterface {
-  isfav: boolean;
+interface PropsInterface {
+  isfav?: boolean;
 }
 
-export default function FavHeart({ isfav }: propsInterface) {
+const FavHeart: React.FC<PropsInterface> = ({ isfav }) => {
   return (
     <FaHeart
       className={isfav ? "favheart--filled" : "favheart--unfilled"}
     ></FaHeart>
   );
-}
+};
+
+export default FavHeart;
