@@ -1,12 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Films(props) {
-  const { filmName, img, key, id } = props;
+interface Propsinterface {
+  filmName: string;
+  img: string;
+  key: number;
+  id: number;
+}
 
-  const addDefaultSrc = (ev) => {
+const Films: React.FC<Propsinterface> = ({ filmName, img, key, id }) => {
+  const addDefaultSrc = (ev: React.SyntheticEvent<HTMLImageElement, Event>) => {
     //     //sets a default image in case the api dosen't return any
-    ev.target.src = "../noimage.png";
+    (ev.target as HTMLImageElement).src = "../noimage.png";
   };
 
   return (
@@ -32,4 +37,6 @@ export default function Films(props) {
       </div>
     </div>
   );
-}
+};
+
+export default Films;

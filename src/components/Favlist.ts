@@ -1,26 +1,28 @@
-let favList =
+let favList: number[] =
   localStorage.getItem("favourites") !== null
-    ? JSON.parse(localStorage.getItem("favourites"))
+    ? JSON.parse(localStorage.getItem("favourites")!)
     : [];
 
-const addMovieToFavs = (movieobject) => {
-  favList.push(movieobject);
+const addMovieToFavs = (movieid: number): void => {
+  favList.push(movieid);
 
   localStorage.setItem("favourites", JSON.stringify(favList));
-  console.log(favList);
 };
 
-const deleteMovieFromFavs = (movieid) => {
-  const indexOfMovie = favList.findIndex((element) => element.id === movieid);
+const deleteMovieFromFavs = (movieid: number) => {
+  const indexOfMovie = favList.findIndex(
+    (element: number) => element === movieid
+  );
 
   favList.splice(indexOfMovie, 1);
 
   localStorage.setItem("favourites", JSON.stringify(favList));
-  console.log(favList);
 };
 
-const isMovieFav = (movieid) => {
-  const indexOfMovie = favList.findIndex((element) => element === movieid);
+const isMovieFav = (movieid: number): boolean => {
+  const indexOfMovie = favList.findIndex(
+    (element: number) => element === movieid
+  );
   if (indexOfMovie === -1) {
     return false;
   } else {
@@ -28,12 +30,12 @@ const isMovieFav = (movieid) => {
   }
 };
 
-const clearFavList = () => {
+const clearFavList = (): void => {
   favList = [];
   localStorage.setItem("favourites", JSON.stringify(favList));
 };
 
-const setNewFavList = (array) => {
+const setNewFavList = (array: number[]): void => {
   localStorage.setItem("favourites", JSON.stringify(array));
   favList = array;
 };

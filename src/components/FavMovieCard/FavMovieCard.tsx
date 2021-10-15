@@ -7,19 +7,48 @@ import FavHeart from "../FavHeart";
 import MyContext from "../Mycontext";
 import Stars from "../Stars";
 
-export default function FavMovieCard({ movieid, removeMovie }) {
-  const [thisMovie, setThisMovie] = useState({});
-  const [thisGenres, setThisGenres] = useState("");
+interface PropsInterface {
+  movieid: number;
+  removeMovie: (arg0: number) => void;
+}
 
-  const context = useContext(MyContext);
+interface ThisMovieInterface {
+  id: number;
+  overview: string;
+  title: string;
+  poster_path: string;
+  adult: boolean;
+  vote_count: number;
+  vote_average: number;
+  runtime: number;
+  genres: { name: string; id: number }[];
+}
+
+const FavMovieCard: React.FC<PropsInterface> = ({ movieid, removeMovie }) => {
+  const [thisMovie, setThisMovie] = useState({
+    id: 0,
+    overview: "",
+    title: "",
+    poster_path: "",
+    adult: false,
+    vote_count: 0,
+    vote_average: 0,
+    runtime: 0,
+    genres: [{ name: "", id: 0 }],
+  });
+  const [thisGenres, setThisGenres] = useState<string>("");
+
+  const context: { genres: number[] } = useContext(MyContext);
 
   useEffect(() => {
     const bringInfo = async () => {
-      const movie = await getMovie(movieid);
+      const movie: ThisMovieInterface = await getMovie(movieid);
 
       await setThisMovie(movie);
 
-      const genresids = movie.genres.map((genre) => genre.id);
+      const genresids: number[] = movie.genres.map(
+        (genre: { name: string; id: number }) => genre.id
+      );
 
       await setThisGenres(findMatchingGenres(context.genres, genresids));
     };
@@ -36,7 +65,7 @@ export default function FavMovieCard({ movieid, removeMovie }) {
     vote_count,
     vote_average,
     runtime,
-  } = thisMovie;
+  }: ThisMovieInterface = thisMovie;
 
   return (
     <div className="favCard__container">
@@ -60,8 +89,8 @@ export default function FavMovieCard({ movieid, removeMovie }) {
           className="favCard__imagecontainer__image"
           src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
           onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = "./noimage.png";
+            (e.target as HTMLImageElement).onerror = null;
+            (e.target as HTMLImageElement).src = "./noimage.png";
           }}
         ></img>
         <div className="favCard__imagecontainer__bottom">
@@ -79,15 +108,17 @@ export default function FavMovieCard({ movieid, removeMovie }) {
       <div className="favCard__textcontainer">
         <div className="favCard__textcontainer__titleflex">
           <h2>{title}</h2>
-          <p>{runtime}</p>
+          <p>{runtime} minutes</p>
         </div>
 
         <p className="favCard__textcontainer__overview">{overview}</p>
 
-        <button class="favCard__textcontainer__bookbttn">
+        <button className="favCard__textcontainer__bookbttn">
           Book Your Ticket
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default FavMovieCard;

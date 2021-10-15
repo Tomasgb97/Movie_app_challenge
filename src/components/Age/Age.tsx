@@ -1,6 +1,11 @@
 import React from "react";
 
-function Age({ boolean, big }) {
+interface Props {
+  boolean: boolean;
+  big?: boolean;
+}
+
+function Age({ boolean, big }: Props) {
   return (
     <div className={big ? "agetag --big" : "agetag"}>
       {boolean ? "18+" : "8+"}

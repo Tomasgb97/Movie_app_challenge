@@ -12,16 +12,36 @@ import {
   isMovieFav,
 } from "../Favlist";
 
-export default function Moviecard(props) {
+interface PropsInterface {
+  img: String;
+  adult: boolean;
+  reviews: number;
+  stars: number;
+  id: number;
+  title: String;
+  release: string;
+  genresids: number[];
+}
+
+const Moviecard: React.FC<PropsInterface> = ({
+  img,
+  adult,
+  reviews,
+  stars,
+  id,
+  title,
+  release,
+  genresids,
+}) => {
   const context = useContext(MyContext);
 
-  const [genres, setGenres] = useState([]);
+  const [genres, setGenres] = useState<string[]>([""]);
 
-  const [faved, setFaved] = useState(false);
+  const [faved, setFaved] = useState<boolean>(false);
 
   useEffect(() => {
-    setGenres(findMatchingGenres(context.genres, props.genres));
-  }, [props]);
+    setGenres(findMatchingGenres(context.genres, genresids));
+  }, []);
 
   useEffect(() => {
     if (isMovieFav(id)) {
@@ -41,8 +61,6 @@ export default function Moviecard(props) {
     deleteMovieFromFavs(id);
     setFaved(false);
   };
-
-  const { img, adult, reviews, stars, id, title, release } = props;
 
   return (
     <div data-aos="fade-up" data-aos-duration="1000" className="cardContainer">
@@ -68,8 +86,8 @@ export default function Moviecard(props) {
               className="upperPart__imagecontainer__image"
               src={`https://image.tmdb.org/t/p/w500/${img}`}
               onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "./noimage.png";
+                (e.target as HTMLImageElement).onerror = null;
+                (e.target as HTMLImageElement).src = "./noimage.png";
               }}
             ></img>
           </div>
@@ -90,4 +108,6 @@ export default function Moviecard(props) {
       </div>
     </div>
   );
-}
+};
+
+export default Moviecard;

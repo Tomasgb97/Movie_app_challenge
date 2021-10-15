@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FavHeart from "../FavHeart";
 
-export default function FavsBttn() {
+const FavsBttn = () => {
   return (
     <Link to={`/favourites`}>
       <div className="Favsbttn">
@@ -11,4 +11,6 @@ export default function FavsBttn() {
       </div>
     </Link>
   );
-}
+};
+
+export default FavsBttn;
