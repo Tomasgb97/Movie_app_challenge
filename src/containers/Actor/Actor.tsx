@@ -1,24 +1,51 @@
 import React, { Component } from "react";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 import Films from "../../components/Films";
 import { getActorbio, getActorMovies } from "../../functions/fetching";
 import MyContext from "../../components/Mycontext";
+import { promises } from "fs";
+import { Promise } from "q";
 
-export class Actor extends Component {
+interface StateInterface {
+  bio: {
+    name: string;
+    profile_path: string;
+    birthday: string;
+    place_of_birth: string;
+    known_for_department: string;
+    biography: string;
+  };
+
+  movies: {
+    id: number;
+    title: string;
+    poster_path: string;
+  }[];
+}
+
+class Actor extends React.Component<RouteComponentProps<{ id: string }>> {
   static contextType = MyContext;
 
-  constructor(props) {
-    super(props);
-    this.state = { bio: {}, movies: [] };
-  }
+  state: StateInterface = {
+    bio: {
+      name: "",
+      profile_path: "",
+      birthday: "",
+      place_of_birth: "",
+      known_for_department: "",
+      biography: "",
+    },
+    movies: [],
+  };
 
   componentDidMount() {
-    let idNumber = parseInt(this.props.match.params.id); //gets the actor id number from the url parameters
+    let idNumber: number = parseInt(this.props.match.params.id); //gets the actor id number from the url parameters
 
     const setActor = async () => {
       //gets the actor info.
-      const actor = await getActorbio(idNumber);
+      const actor: JSON = await getActorbio(idNumber);
 
       this.setState({ bio: actor });
     };
@@ -27,7 +54,7 @@ export class Actor extends Component {
 
     const setActorMovies = async () => {
       //gets the movies where the actor worked on the cast
-      const movies = await getActorMovies(idNumber);
+      const movies: JSON[] = await getActorMovies(idNumber);
       this.setState({ movies: movies });
     };
 

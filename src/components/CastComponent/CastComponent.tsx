@@ -7,7 +7,7 @@ interface PropsInterface {
   id: number;
 }
 
-const CastComponent: React.FC<PropsInterface> = ({actorname,id,img,children}) => {
+const CastComponent: React.FC<PropsInterface> = ({actorname,id,img}) => {
   
 
   const addDefaultSrc = (ev: React.SyntheticEvent<HTMLImageElement, Event>) => {
