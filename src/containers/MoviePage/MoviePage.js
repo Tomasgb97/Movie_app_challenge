@@ -24,6 +24,7 @@ export default class MoviePage extends Component {
       adult: "",
       cast: [""],
       vote_count: "",
+      vote_average: 0,
       fetchedgenres: "",
       movie: {},
       genres: "",
@@ -56,7 +57,6 @@ export default class MoviePage extends Component {
           movie: movieIsFetched,
           fetchedgenres: movieIsFetched.genre_ids,
         });
-
         await this.setState({
           genres: findMatchingGenres(
             this.context.genres,
@@ -102,6 +102,7 @@ export default class MoviePage extends Component {
     setCast();
 
     this.context.setActualPage(idNumber);
+
   }
 
   render() {

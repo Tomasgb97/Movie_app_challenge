@@ -11,7 +11,7 @@ const Stars: React.FC<PropsInterface> = ({ stars, big }) => {
 
   useEffect(() => {
     let starsArray: ReactNode[] = [];
-    let starsAmount: number = Math.round(stars) / 2; //gets rating from props and turns it into integer divided by two (ratings were 1-10 and we needed 1-5 stars);
+    let starsAmount: number = Math.floor(stars) / 2; //gets rating from props and turns it into integer divided by two (ratings were 1-10 and we needed 1-5 stars);
 
     for (let i = 0; i < 5; i++) {
       //goes throught 1-5 and if the rating amount is higher or equal on each iteration it pushes a filled star component to  starsArray, else it pushes an empty star
@@ -23,7 +23,7 @@ const Stars: React.FC<PropsInterface> = ({ stars, big }) => {
     }
 
     setArray(starsArray);
-  }, []);
+  }, [stars]);
 
   return (
     <div className={big ? "stars --bigstars" : "stars"}>

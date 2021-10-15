@@ -11,6 +11,8 @@ interface StateInterface {
 interface PropsInterface {}
 
 class Favourites extends Component<PropsInterface, StateInterface> {
+  state = { movies: [] };
+
   removeMovie = (id: number) => {
     const movies: number[] = this.state.movies;
 
