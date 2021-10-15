@@ -4,22 +4,20 @@ import { favList, setNewFavList } from "../../components/Favlist";
 import FavMovieCard from "../../components/FavMovieCard";
 import { IoIosArrowBack } from "react-icons/io";
 
-export default class Favourites extends Component {
-  constructor(props) {
-    super(props);
+interface StateInterface {
+  movies: number[];
+}
 
-    this.state = { movies: [] };
+interface PropsInterface {}
 
-    this.removeMovie = this.removeMovie.bind(this);
-  }
+class Favourites extends Component<PropsInterface, StateInterface> {
+  removeMovie = (id: number) => {
+    const movies: number[] = this.state.movies;
 
-  removeMovie(id) {
-    const movies = this.state.movies;
-
-    const newMovies = movies.filter((movie) => movie !== id);
+    const newMovies: number[] = movies.filter((movie: number) => movie !== id);
 
     this.setState({ movies: newMovies });
-  }
+  };
 
   componentDidMount() {
     this.setState({ movies: favList });
@@ -45,16 +43,23 @@ export default class Favourites extends Component {
           <h2>Favourite Movies</h2>
         </div>
         <div className="favourites__moviescontainer">
-          {movies.length === 0 ? 
-          <h1 className="favourites__nomovie">There are no favourite movies to display</h1> : movies.map((movieid) => (
-            <FavMovieCard
-              key={movieid}
-              removeMovie={this.removeMovie}
-              movieid={movieid}
-            ></FavMovieCard>
-          ))}
+          {movies.length === 0 ? (
+            <h1 className="favourites__nomovie">
+              There are no favourite movies to display
+            </h1>
+          ) : (
+            movies.map((movieid) => (
+              <FavMovieCard
+                key={movieid}
+                removeMovie={this.removeMovie}
+                movieid={movieid}
+              ></FavMovieCard>
+            ))
+          )}
         </div>
       </div>
     );
   }
 }
+
+export default Favourites;
