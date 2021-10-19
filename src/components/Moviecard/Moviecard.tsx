@@ -13,14 +13,15 @@ import {
 } from "../Favlist";
 
 interface PropsInterface {
-  img: String;
+  img: string;
   adult: boolean;
   reviews: number;
   stars: number;
   id: number;
-  title: String;
-  release: string;
+  title: string;
+  release: string | undefined;
   genresids: number[];
+  genresArray: { id: number; name: string }[];
 }
 
 const Moviecard: React.FC<PropsInterface> = ({
@@ -35,13 +36,13 @@ const Moviecard: React.FC<PropsInterface> = ({
 }) => {
   const context = useContext(MyContext);
 
-  const [genres, setGenres] = useState<string[]>([""]);
+  const [genres, setGenres] = useState<string>("");
 
   const [faved, setFaved] = useState<boolean>(false);
 
   useEffect(() => {
     setGenres(findMatchingGenres(context.genres, genresids));
-  }, []);
+  }, [context.genres, genresids]);
 
   useEffect(() => {
     if (isMovieFav(id)) {
@@ -50,7 +51,7 @@ const Moviecard: React.FC<PropsInterface> = ({
     } else {
       setFaved(false);
     }
-  }, []);
+  }, [id]);
 
   const fav = () => {
     addMovieToFavs(id);

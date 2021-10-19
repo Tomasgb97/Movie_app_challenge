@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.15.8",
     "@types/dateformat": "^3.0.1",
     "@types/react-router-dom": "^5.3.1"
   }

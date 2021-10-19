@@ -5,14 +5,9 @@ import MyContext from "../../components/Mycontext";
 import Pagination from "../../components/Pagination";
 import FavsBttn from "../../components/FavsBttn";
 
-export default class MoviesContainer extends Component {
+class MoviesContainer extends Component<{}, {}> {
   static contextType = MyContext;
-
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
+  context!: React.ContextType<typeof MyContext>;
 
   render() {
     const { fetched, genres } = this.context;
@@ -60,3 +55,5 @@ export default class MoviesContainer extends Component {
     );
   }
 }
+
+export default MoviesContainer;

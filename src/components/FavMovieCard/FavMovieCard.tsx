@@ -12,7 +12,7 @@ interface PropsInterface {
   removeMovie: (arg0: number) => void;
 }
 
-interface ThisMovieInterface {
+interface MovieInterface {
   id: number;
   overview: string;
   title: string;
@@ -38,11 +38,12 @@ const FavMovieCard: React.FC<PropsInterface> = ({ movieid, removeMovie }) => {
   });
   const [thisGenres, setThisGenres] = useState<string>("");
 
-  const context: { genres: number[] } = useContext(MyContext);
+  const context: { genres: { id: number; name: string }[] } =
+    useContext(MyContext);
 
   useEffect(() => {
     const bringInfo = async () => {
-      const movie: ThisMovieInterface = await getMovie(movieid);
+      const movie = await getMovie(movieid);
 
       await setThisMovie(movie);
 
@@ -54,7 +55,7 @@ const FavMovieCard: React.FC<PropsInterface> = ({ movieid, removeMovie }) => {
     };
 
     bringInfo();
-  }, []);
+  });
 
   const {
     id,
@@ -65,7 +66,7 @@ const FavMovieCard: React.FC<PropsInterface> = ({ movieid, removeMovie }) => {
     vote_count,
     vote_average,
     runtime,
-  }: ThisMovieInterface = thisMovie;
+  }: MovieInterface = thisMovie;
 
   return (
     <div className="favCard__container">
