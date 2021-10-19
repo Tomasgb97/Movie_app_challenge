@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import MyContext from "../Mycontext";
 
-export default function Pagination() {
+const Pagination: React.FC = () => {
   const context = useContext(MyContext);
   const { setMovies } = context;
 
@@ -56,3 +56,5 @@ export default function Pagination() {
     </div>
   );
 }
+
+export default Pagination

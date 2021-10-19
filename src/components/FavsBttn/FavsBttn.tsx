@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import FavHeart from "../FavHeart";
 
-const FavsBttn = () => {
+const FavsBttn: React.FC = () => {
   return (
     <Link to={`/favourites`}>
       <div className="Favsbttn">
