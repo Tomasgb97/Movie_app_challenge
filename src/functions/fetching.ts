@@ -23,7 +23,7 @@ const fetchTopMovies = async (page?: number) => {
   return json.results ? json.results : [];
 };
 
-const fetchQuery = async (query: string) => {
+const fetchQuery = async (query?: string) => {
   if (query !== "") {
     const data = await fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_NEWKEY}&language=en-US&query=${query}&page=1&include_adult=false`,

@@ -17,7 +17,7 @@ interface ContextValueInterface {
   actualpage: string;
   setActualPage: (arg0: number) => void;
   updateFetchState: (arg0: string) => void;
-  setMovies: (arg0: string) => void;
+  setMovies: (arg0: number | undefined) => void;
 }
 
 const MyContext = React.createContext<ContextValueInterface>(
