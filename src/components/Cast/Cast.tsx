@@ -7,9 +7,7 @@ interface PropsInterface {
   id: number;
 }
 
-const CastComponent: React.FC<PropsInterface> = ({actorname,id,img}) => {
-  
-
+const CastComponent: React.FC<PropsInterface> = ({ actorname, id, img }) => {
   const addDefaultSrc = (ev: React.SyntheticEvent<HTMLImageElement, Event>) => {
     //sets a default image in case the src link provided by the api dosen't return any.
     (ev.target as HTMLImageElement).src = "../noimage.png";
@@ -34,6 +32,6 @@ const CastComponent: React.FC<PropsInterface> = ({actorname,id,img}) => {
       <h4 className="actorCard__name">{actorname}</h4>
     </Link>
   );
-}
+};
 
 export default CastComponent;

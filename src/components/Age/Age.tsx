@@ -5,12 +5,12 @@ interface Props {
   big?: boolean;
 }
 
-function Age({ boolean, big }: Props) {
+const Age: React.FC<Props> = ({ boolean, big }) => {
   return (
     <div className={big ? "agetag --big" : "agetag"}>
       {boolean ? "18+" : "8+"}
     </div>
   );
-}
+};
 
 export default Age;
