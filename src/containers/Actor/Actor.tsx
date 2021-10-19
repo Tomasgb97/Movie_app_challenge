@@ -1,28 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
 import { RouteComponentProps } from "react-router";
 import Films from "../../components/Films";
 import { getActorbio, getActorMovies } from "../../functions/fetching";
 import MyContext from "../../components/Mycontext";
-import { promises } from "fs";
-import { Promise } from "q";
+import { ActorInterface, ActorMovies } from "../../interfaces";
 
 interface StateInterface {
-  bio: {
-    name: string;
-    profile_path: string;
-    birthday: string;
-    place_of_birth: string;
-    known_for_department: string;
-    biography: string;
-  };
+  bio: ActorInterface;
 
-  movies: {
-    id: number;
-    title: string;
-    poster_path: string;
-  }[];
+  movies: ActorMovies[];
 }
 
 class Actor extends React.Component<RouteComponentProps<{ id: string }>> {
@@ -45,7 +33,7 @@ class Actor extends React.Component<RouteComponentProps<{ id: string }>> {
 
     const setActor = async () => {
       //gets the actor info.
-      const actor: JSON = await getActorbio(idNumber);
+      const actor = await getActorbio(idNumber);
 
       this.setState({ bio: actor });
     };
@@ -54,7 +42,7 @@ class Actor extends React.Component<RouteComponentProps<{ id: string }>> {
 
     const setActorMovies = async () => {
       //gets the movies where the actor worked on the cast
-      const movies: JSON[] = await getActorMovies(idNumber);
+      const movies = await getActorMovies(idNumber);
       this.setState({ movies: movies });
     };
 

@@ -1,11 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { RouteComponentProps } from "react-router";
 import MyContext from "../../components/Mycontext";
 import { AiFillPlayCircle } from "react-icons/ai";
 import Stars from "../../components/Stars";
 import Age from "../../components/Age";
 import FavHeart from "../../components/FavHeart";
-import CastComponent from "../../components/CastComponent";
+import Cast from "../../components/Cast";
 import { findMatchingGenres } from "../../functions/filtering";
 import { getCast, getMovie } from "../../functions/fetching";
 import {
@@ -14,27 +15,48 @@ import {
   addMovieToFavs,
 } from "../../components/Favlist";
 
-export default class MoviePage extends Component {
+import { CastInterface, MoviePageMovie } from "../../interfaces";
+
+interface StateInterface {
+  adult: boolean;
+  cast: CastInterface[];
+  vote_count: number;
+  vote_average: number;
+  fetchedgenres: number[];
+  movie: MoviePageMovie;
+  genres: string;
+  isfav: boolean;
+}
+
+class MoviePage extends React.Component<
+  RouteComponentProps<{ id: string }>,
+  StateInterface
+> {
   static contextType = MyContext;
+  context!: React.ContextType<typeof MyContext>;
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      adult: "",
-      cast: [""],
-      vote_count: "",
+  state = {
+    adult: false,
+    cast: [{ id: 0, name: " ", profile_path: " " }],
+    vote_count: 0,
+    vote_average: 0,
+    fetchedgenres: [0],
+    movie: {
+      title: "",
+      id: 0,
+      vote_count: 0,
       vote_average: 0,
-      fetchedgenres: "",
-      movie: {},
-      genres: "",
-      isfav: false,
-    };
+      poster_path: "",
+      overview: "",
+      adult: false,
+      genres: [0],
+      genre_ids: [0],
+    },
+    genres: "",
+    isfav: false,
+  };
 
-    this.favAction = this.favAction.bind(this);
-  }
-
-  favAction() {
+  favAction = () => {
     if (this.state.isfav) {
       this.setState({ isfav: false });
       deleteMovieFromFavs(this.state.movie.id);
@@ -42,14 +64,14 @@ export default class MoviePage extends Component {
       this.setState({ isfav: true });
       addMovieToFavs(this.state.movie.id);
     }
-  }
+  };
 
   componentDidMount() {
-    let idNumber = parseInt(this.props.match.params.id); //gets id of the movie and formats it;
+    let idNumber: number = parseInt(this.props.match.params.id); //gets id of the movie and formats it;
 
-    let movieIsFetched = Object.values(this.context.fetched).find(
-      (movie) => movie.id === idNumber
-    );
+    const fetchedMovies: MoviePageMovie[] = Object.values(this.context.fetched);
+
+    let movieIsFetched = fetchedMovies.find((movie) => movie.id === idNumber);
 
     const setmovie = async () => {
       if (movieIsFetched !== undefined) {
@@ -65,7 +87,9 @@ export default class MoviePage extends Component {
         });
       } else {
         const movie = await getMovie(idNumber);
-        let genres = movie.genres.map((one) => one.id);
+        let genres: number[] = movie.genres.map(
+          (one: { id: number }) => one.id
+        );
         this.setState({
           movie: {
             title: movie.title,
@@ -75,6 +99,7 @@ export default class MoviePage extends Component {
             overview: movie.overview,
             vote_average: movie.vote_average,
             id: movie.id,
+            genre_ids: [0],
           },
           fetchedgenres: genres,
         });
@@ -102,7 +127,6 @@ export default class MoviePage extends Component {
     setCast();
 
     this.context.setActualPage(idNumber);
-
   }
 
   render() {
@@ -171,12 +195,12 @@ export default class MoviePage extends Component {
             </div>
             <div className="castcontainer__cards">
               {cast.map((castmember) => (
-                <CastComponent
+                <Cast
                   key={castmember.id}
                   id={castmember.id}
                   actorname={castmember.name}
                   img={`https://image.tmdb.org/t/p/w500/${castmember.profile_path}`}
-                ></CastComponent>
+                ></Cast>
               ))}
             </div>
           </div>
@@ -185,3 +209,5 @@ export default class MoviePage extends Component {
     );
   }
 }
+
+export default MoviePage;

@@ -6,7 +6,6 @@ const FavsBttn = () => {
   return (
     <Link to={`/favourites`}>
       <div className="Favsbttn">
-        Favs
         <FavHeart />
       </div>
     </Link>

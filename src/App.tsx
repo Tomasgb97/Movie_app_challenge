@@ -8,34 +8,34 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { fetchTopMovies, fetchQuery, getGenres } from "./functions/fetching";
+import { MovieInterface } from "./interfaces";
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
+interface StateInterface {
+  data: MovieInterface[];
+  genres: { id: number; name: string }[];
+  actualpage: number | string;
+  actualquery: string | undefined;
+}
 
-    this.state = { data: [], genres: [], actualpage: "/", actualquery: "" };
+export default class App extends Component<{}, StateInterface> {
+  state = { data: [], genres: [], actualpage: "/", actualquery: "" };
 
-    this.fetchquery = this.fetchquery.bind(this);
-    this.setActualPage = this.setActualPage.bind(this);
-    this.setMovies = this.setMovies.bind(this);
-  }
-
-  fetchquery(query) {
+  fetchquery = (query?: string) => {
     if (this.state.actualquery !== query) {
       //checks for the query param and searches it, unless it's "". in that case the api returns 20 most popular movies.
-      this.setState(this.props, async () => {
+      this.setState({}, async () => {
         const data = await fetchQuery(query);
         this.setState({ data: data });
       });
       this.setState({ actualquery: query });
     }
-  }
+  };
 
-  setActualPage(param) {
+  setActualPage = (param: number) => {
     this.setState({ actualpage: param });
-  }
+  };
 
-  setMovies = async (page) => {
+  setMovies = async (page?: number) => {
     let data = await fetchTopMovies(page);
     this.setState({ data: data });
   };
