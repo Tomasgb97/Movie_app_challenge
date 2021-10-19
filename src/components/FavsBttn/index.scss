@@ -1,12 +1,19 @@
 .Favsbttn {
-  position: absolute;
+  position: relative;
   color: #e2d0d0;
-  top: 14px;
-  right: 4%;
-  background-color: #ff3365;
+  top: 0px;
   padding: 4px;
-  border-radius: 4px;
+  border-radius: 50px 0px 0px 50px;
   font-weight: 600;
+  grid-gap: 8px;
   display: flex;
-  gap: 8px;
+  height: 38px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    271deg,
+    rgba(233, 30, 99, 0.02) 0%,
+    rgba(255, 51, 101, 0.68) 91%
+  );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import MyContext from "../Mycontext";
+import FavsBttn from "../../components/FavsBttn";
 
 const Searchbar: React.FC = () => {
   const [value, setValue] = useState<string>("");
@@ -33,6 +34,7 @@ const Searchbar: React.FC = () => {
   return (
     <div className="searchContainer">
       <div className="searchContainer__bar">
+        <FavsBttn></FavsBttn>
         <input
           onChange={handleQueryChange}
           className="searchContainer__bar__input"

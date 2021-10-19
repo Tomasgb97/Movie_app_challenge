@@ -3,7 +3,6 @@ import Searchbar from "../../components/Searchbar";
 import Moviecard from "../../components/Moviecard";
 import MyContext from "../../components/Mycontext";
 import Pagination from "../../components/Pagination";
-import FavsBttn from "../../components/FavsBttn";
 
 class MoviesContainer extends Component<{}, {}> {
   static contextType = MyContext;
@@ -13,7 +12,6 @@ class MoviesContainer extends Component<{}, {}> {
     const { fetched, genres } = this.context;
     return (
       <div>
-        <FavsBttn />
         <div className="container">
           <Searchbar></Searchbar>
 
