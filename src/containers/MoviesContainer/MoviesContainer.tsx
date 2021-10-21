@@ -20,27 +20,10 @@ class MoviesContainer extends Component<{}, {}> {
               <h1 className="container__list__nomovie">No movie was found</h1>
             ) : (
               Object.values(fetched).map(
-                ({
-                  adult,
-                  genre_ids,
-                  vote_count,
-                  title,
-                  release_date,
-                  vote_average,
-                  id,
-                  poster_path,
-                }) => (
+                (movie) => (
                   <Moviecard
-                    key={id}
-                    id={id}
-                    stars={vote_average}
-                    title={title}
-                    reviews={vote_count}
-                    adult={adult}
-                    release={release_date}
-                    genresids={genre_ids}
-                    img={poster_path}
-                    genresArray={genres}
+                    key={movie.id}
+                    movie={movie}
                   />
                 )
               )

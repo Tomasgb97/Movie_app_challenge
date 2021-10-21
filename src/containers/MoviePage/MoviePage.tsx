@@ -7,8 +7,8 @@ import Stars from "../../components/Stars";
 import Age from "../../components/Age";
 import FavHeart from "../../components/FavHeart";
 import Cast from "../../components/Cast";
-import { findMatchingGenres } from "../../functions/filtering";
-import { getCast, getMovie } from "../../functions/fetching";
+import { findMatchingGenres } from "../../utils/filtering";
+import { getCast, getMovie } from "../../utils/fetching";
 import {
   isMovieFav,
   deleteMovieFromFavs,

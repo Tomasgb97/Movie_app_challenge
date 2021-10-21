@@ -4,7 +4,7 @@ import Age from "../Age";
 import FavHeart from "../FavHeart";
 import { Link } from "react-router-dom";
 import MyContext from "../Mycontext";
-import { findMatchingGenres } from "../../functions/filtering";
+import { findMatchingGenres } from "../../utils/filtering";
 import {
   addMovieToFavs,
   deleteMovieFromFavs,
@@ -13,27 +13,32 @@ import {
 } from "../Favlist";
 
 interface PropsInterface {
-  img: string;
-  adult: boolean;
-  reviews: number;
-  stars: number;
-  id: number;
-  title: string;
-  release: string | undefined;
-  genresids: number[];
-  genresArray: { id: number; name: string }[];
+  movie: {
+    title: string;
+    id: number;
+    vote_count: number;
+    vote_average: number;
+    poster_path: string;
+    overview: string;
+    adult: boolean;
+    genre_ids: number[];
+    genres?: number[] | undefined;
+    release_date?: string | undefined;
+  };
 }
 
-const Moviecard: React.FC<PropsInterface> = ({
-  img,
-  adult,
-  reviews,
-  stars,
-  id,
-  title,
-  release,
-  genresids,
-}) => {
+const Moviecard: React.FC<PropsInterface> = ({ movie }) => {
+  const {
+    title,
+    id,
+    vote_average,
+    vote_count,
+    poster_path,
+    release_date,
+    adult,
+    genre_ids,
+  } = movie;
+
   const context = useContext(MyContext);
 
   const [genres, setGenres] = useState<string>("");
@@ -41,8 +46,8 @@ const Moviecard: React.FC<PropsInterface> = ({
   const [faved, setFaved] = useState<boolean>(false);
 
   useEffect(() => {
-    setGenres(findMatchingGenres(context.genres, genresids));
-  }, [context.genres, genresids]);
+    setGenres(findMatchingGenres(context.genres, genre_ids));
+  }, [context.genres, genre_ids]);
 
   useEffect(() => {
     if (isMovieFav(id)) {
@@ -85,7 +90,7 @@ const Moviecard: React.FC<PropsInterface> = ({
             <img
               alt="poster"
               className="upperPart__imagecontainer__image"
-              src={`https://image.tmdb.org/t/p/w500/${img}`}
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               onError={(e) => {
                 (e.target as HTMLImageElement).onerror = null;
                 (e.target as HTMLImageElement).src = "./noimage.png";
@@ -95,9 +100,9 @@ const Moviecard: React.FC<PropsInterface> = ({
           <div className="upperPart__bottom">
             <span className="upperPart__bottom__genre">{genres}</span>
             <div className="upperPart__bottom__flex">
-              <Stars stars={stars}></Stars>
+              <Stars stars={vote_average}></Stars>
               <span className="upperPart__bottom__flex__reviews">
-                {reviews} Reviews
+                {vote_count} Reviews
               </span>
             </div>
           </div>
@@ -105,7 +110,7 @@ const Moviecard: React.FC<PropsInterface> = ({
       </div>
       <div className="lowerPart">
         <h4 className="lowerPart__title">{title}</h4>
-        <p className="lowerPart__duration">{release}</p>
+        <p className="lowerPart__duration">{release_date}</p>
       </div>
     </div>
   );

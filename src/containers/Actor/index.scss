@@ -60,18 +60,18 @@ $main-pink: #ff3365;
     opacity: 0.2;
   }
 
-  .maincontainer__profile {
+  &__profile {
     display: flex;
     width: 100%;
     gap: 16px;
     margin-bottom: 32px;
 
-    .maincontainer__profile__imgcontainer {
+    &__imgcontainer {
       width: 80px;
       height: 80px;
       border-radius: 4px;
 
-      .maincontainer__profile__imgcontainer__img {
+      &__img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -79,15 +79,15 @@ $main-pink: #ff3365;
       }
     }
 
-    .maincontainer__profile__flex {
+    &__flex {
       display: flex;
       flex-direction: column;
       gap: 2px;
       align-self: center;
 
-      .maincontainer__profile__flex__birth,
-      .maincontainer__profile__flex__place,
-      .maincontainer__profile__flex__department {
+      &__birth,
+      &__place,
+      &__department {
         color: white;
         font-size: 14px;
         font-weight: 300;
@@ -96,7 +96,7 @@ $main-pink: #ff3365;
         text-align: left;
       }
 
-      .maincontainer__profile__flex__department {
+      &__department {
         color: $main-pink;
       }
     }
@@ -109,7 +109,7 @@ $main-pink: #ff3365;
     flex-direction: column;
     gap: 9px;
 
-    .films__topflex {
+    &__topflex {
       align-items: center;
       flex-direction: row;
       justify-content: space-between;
@@ -134,7 +134,7 @@ $main-pink: #ff3365;
       }
     }
 
-    .films__cardscontainer {
+    &__cardscontainer {
       display: flex;
       gap: 13px;
       overflow-x: auto;

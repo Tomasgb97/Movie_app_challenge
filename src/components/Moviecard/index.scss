@@ -31,7 +31,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
     justify-content: space-between;
     border-radius: 8px 8px 0px 0px;
 
-    .upperPart__imagecontainer {
+    &__imagecontainer {
       position: absolute;
       width: 100%;
       height: 248px;
@@ -41,14 +41,14 @@ $lighter-blue2: rgba(86, 86, 101, 1);
         #191926 87.5%
       );
 
-      .upperPart__imagecontainer__link {
+      &__link {
         width: 100%;
         height: 86%;
         position: absolute;
         bottom: 0px;
       }
 
-      .upperPart__imagecontainer__image {
+      &__image {
         object-fit: cover;
         z-index: -1;
         border-radius: 8px 8px 0px 0px;
@@ -58,7 +58,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
       }
     }
 
-    .upperPart__top {
+    &__top {
       display: flex;
       width: 100%;
       align-self: center;
@@ -70,7 +70,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
       top: 8px;
     }
 
-    .upperPart__bottom {
+    &__bottom {
       padding-left: 6px;
       display: flex;
       flex-direction: column;
@@ -81,7 +81,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
       font-size: 8px;
       line-height: 12px;
 
-      .upperPart__bottom__genre {
+      &__genre {
         color: $main-pink;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -91,7 +91,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
         overflow: hidden;
       }
 
-      .upperPart__bottom__flex {
+      &__flex {
         display: flex;
         align-items: center;
         gap: 6px;
@@ -99,7 +99,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
         margin-bottom: 6px;
         height: 12px;
 
-        .upperPart__bottom__flex__reviews {
+        &__reviews {
           font-weight: 800;
           color: $lighter-blue1;
         }
@@ -120,7 +120,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
     border-radius: 0px 0px 8px 8px;
     font-weight: 800;
 
-    .lowerPart__title {
+    &__title {
       font-size: 14px;
       color: rgba(236, 236, 236, 1);
       white-space: nowrap;
@@ -131,7 +131,7 @@ $lighter-blue2: rgba(86, 86, 101, 1);
       line-height: 20px;
     }
 
-    .lowerPart__duration {
+    &__duration {
       font-size: 8px;
       line-height: 12px;
       color: $lighter-blue2;

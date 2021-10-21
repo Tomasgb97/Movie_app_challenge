@@ -12,12 +12,12 @@ $transparent-grey: #8080803b;
   border-radius: 9px;
   border: 1px solid $transparent-grey;
 
-  .filmcard__imgcontainer {
+  &__imgcontainer {
     height: 180px;
     width: inherit;
     border-radius: inherit;
 
-    .filmcard__imgcontainer__img {
+    &__img {
       border-radius: 7px;
       width: 98%;
       height: 100%;
@@ -25,7 +25,7 @@ $transparent-grey: #8080803b;
     }
   }
 
-  .filmcard__namecontainer {
+  &__namecontainer {
     margin: 9px 9px 9px 11.5px;
     overflow-y: hidden;
     height: 28px;
@@ -33,7 +33,7 @@ $transparent-grey: #8080803b;
     display: flex;
     align-items: center;
 
-    .filmcard__namecontainer__name {
+    &__name {
       color: white;
       font-size: 9px;
       font-style: normal;

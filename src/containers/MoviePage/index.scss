@@ -11,7 +11,7 @@ $main-blue: rgb(1, 1, 29);
     #191926 92.15%
   );
 
-  .imgcontainer__img {
+  &__img {
     position: relative;
     width: 100%;
     z-index: -3;
@@ -25,14 +25,13 @@ $main-blue: rgb(1, 1, 29);
   width: 100%;
   margin: 0px;
   padding-inline: 16px;
-  min-height: 100vh;
   z-index: 2;
   position: relative;
   display: flex;
   flex-direction: column;
   max-width: 1024px;
 
-  .main__upper {
+  &__upper {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -40,7 +39,7 @@ $main-blue: rgb(1, 1, 29);
     align-items: center;
     gap: 12px;
 
-    .main__upper__topflex {
+    &__topflex {
       width: 95%;
       display: flex;
       justify-content: space-between;
@@ -50,7 +49,7 @@ $main-blue: rgb(1, 1, 29);
       height: 40px;
     }
 
-    .main__upper__topflex__backbttn {
+    &__topflex__backbttn {
       font-size: 12px;
       font-weight: 300;
       line-height: 16px;
@@ -63,11 +62,11 @@ $main-blue: rgb(1, 1, 29);
       }
     }
 
-    .main__upper__topflex__fav {
+    &__topflex__fav {
       cursor: pointer;
     }
 
-    .main__upper__playicon {
+    &__playicon {
       color: white;
       opacity: 0.75;
       cursor: pointer;
@@ -80,7 +79,7 @@ $main-blue: rgb(1, 1, 29);
     }
   }
 
-  .main__meta {
+  &__meta {
     position: relative;
     color: white;
     margin-top: 8px;
@@ -94,13 +93,13 @@ $main-blue: rgb(1, 1, 29);
     font-style: normal;
     letter-spacing: 0px;
 
-    .main__meta__title {
+    &__title {
       font-weight: 800;
       font-size: 40px;
       line-height: normal;
     }
 
-    .main__meta__genres {
+    &__genres {
       color: $main-pink;
       font-size: 14px;
       font-weight: 300;
@@ -108,31 +107,31 @@ $main-blue: rgb(1, 1, 29);
       text-align: left;
     }
 
-    .main__meta__flex {
+    &__flex {
       align-items: center;
       display: flex;
       gap: 8px;
 
-      .main__meta__flex__reviews {
+      &__reviews {
         color: rgba(109, 109, 128, 1);
       }
     }
   }
 
-  .main__description {
+  &__description {
     position: relative;
     margin-top: 24px;
     font-size: 14px;
     line-height: 20px;
     font-weight: 300;
 
-    .main__description__storyline {
+    &__storyline {
       color: white;
       margin-bottom: 4px;
       font-weight: 800;
     }
 
-    .main__description__overview {
+    &__overview {
       color: grey;
     }
   }
@@ -150,7 +149,7 @@ $main-blue: rgb(1, 1, 29);
     line-height: 24px;
     letter-spacing: 0;
 
-    .castcontainer__uppperflex {
+    &__uppperflex {
       width: 100%;
       margin-top: 24px;
       display: flex;
@@ -178,7 +177,7 @@ $main-blue: rgb(1, 1, 29);
       }
     }
 
-    .castcontainer__cards {
+    &__cards {
       width: 100%;
       display: flex;
       overflow-x: auto;
