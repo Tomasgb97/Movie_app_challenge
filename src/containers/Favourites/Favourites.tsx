@@ -38,15 +38,15 @@ class Favourites extends Component<PropsInterface, StateInterface> {
     const { movies } = this.state;
     return (
       <div className="favourites__container">
-        <div className="favourites__topflex">
+        <div className="favourites__container__topflex">
           <Link to={`/`}>
             <IoIosArrowBack />
           </Link>
           <h2>Favourite Movies</h2>
         </div>
-        <div className="favourites__moviescontainer">
+        <div className="favourites__container__moviescontainer">
           {movies.length === 0 ? (
-            <h1 className="favourites__nomovie">
+            <h1 className="favourites__container__nomovie">
               There are no favourite movies to display
             </h1>
           ) : (

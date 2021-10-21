@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import { getMovie } from "../../functions/fetching";
-import { findMatchingGenres } from "../../functions/filtering";
+import { getMovie } from "../../utils/fetching";
+import { findMatchingGenres } from "../../utils/filtering";
 import Age from "../Age";
 import FavHeart from "../FavHeart";
 import MyContext from "../Mycontext";

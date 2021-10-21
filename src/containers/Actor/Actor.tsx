@@ -3,7 +3,7 @@ import dateFormat from "dateformat";
 import { Link } from "react-router-dom";
 import { RouteComponentProps } from "react-router";
 import Films from "../../components/Films";
-import { getActorbio, getActorMovies } from "../../functions/fetching";
+import { getActorbio, getActorMovies } from "../../utils/fetching";
 import MyContext from "../../components/Mycontext";
 import { ActorInterface, ActorMovies } from "../../interfaces";
 

@@ -7,7 +7,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { fetchTopMovies, fetchQuery, getGenres } from "./functions/fetching";
+import { fetchTopMovies, fetchQuery, getGenres } from "./utils/fetching";
 import { MovieInterface } from "./interfaces";
 
 interface StateInterface {

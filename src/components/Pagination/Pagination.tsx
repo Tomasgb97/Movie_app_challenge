@@ -19,7 +19,7 @@ const Pagination: React.FC = () => {
     }
     await SetActual(+value!);
 
-     await setMovies(+value!);
+    await setMovies(+value!);
   };
 
   return (
@@ -55,6 +55,6 @@ const Pagination: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Pagination
+export default Pagination;

@@ -9,10 +9,10 @@ $main-pink: #ff3365;
   gap: 5px;
   font-size: 14px;
 
-  .Pagination__NotSelected,
-  .Pagination__First,
-  .Pagination__Last,
-  .Pagination__Selected {
+  &__NotSelected,
+  &__First,
+  &__Last,
+  &__Selected {
     background-color: #f3f1f117;
     padding: 6px;
     border-radius: 50px;
@@ -22,7 +22,7 @@ $main-pink: #ff3365;
     user-select: none;
   }
 
-  .Pagination__Selected {
+  &__Selected {
     background-color: $main-pink;
     border: 1px solid #fffdfd;
     color: white;
@@ -30,8 +30,8 @@ $main-pink: #ff3365;
     padding-inline: 9px;
   }
 
-  .Pagination__First,
-  .Pagination__Last {
+  &__First,
+  &__Last {
     color: $main-pink;
   }
 }
